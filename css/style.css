@@ -1,0 +1,186 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,100);
+body, div, html{
+	font-family: 'Roboto', 'Microsoft Yahei', 微软雅黑, SimHei, STHeiti, 宋体, 宋体, Tahoma, Arial, Helvetica;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+h1 {
+	font-family: 'Roboto', 'Microsoft Yahei', 微软雅黑, SimHei, STHeiti, 宋体, 宋体, Tahoma, Arial, Helvetica;
+	padding-left: 50px;
+	margin-right:50px;
+	font-weight: 300;
+	font-size:250%;
+	
+}
+
+h2 {
+	font-family: 'Roboto', 'Microsoft Yahei', 微软雅黑, SimHei, STHeiti, 宋体, 宋体, Tahoma, Arial, Helvetica;
+	padding-top: 1em; 
+	padding-left: 50px;
+	margin-right:50px;
+	margin: 0;
+	font-weight: 300;
+	font-size:150%;
+}
+
+h3 {
+	font-family: 'Roboto', 'Microsoft Yahei', 微软雅黑, SimHei, STHeiti, 宋体, 宋体, Tahoma, Arial, Helvetica;
+	padding-top: 0px; 
+	padding-left: 50px;
+	margin: 0;
+	margin-right:150px;
+	font-weight: 300;
+	font-size:150%;
+	float: right;
+
+}
+
+p {
+	font-family: font-family: 'Roboto', 'Microsoft Yahei', 微软雅黑, SimHei, STHeiti, 宋体, 宋体, Tahoma, Arial, Helvetica;
+	padding-top: 0.5em;
+	padding-left: 50px;
+	margin-right:50px;
+	font-weight: 300;
+	font-size:120%;
+	text-align:justify;
+}
+
+div.bodybox {
+	margin: auto;
+	position:relative;
+	border:0px solid black;
+	width:1024px;
+	z-index:2;
+}
+div.transbox {
+	margin: auto;
+	position:relative;
+	border:0px solid black;
+	z-index:2;
+	/* for IE 
+	filter:alpha(opacity=60);
+	/* CSS3 standard 
+	opacity:0.6;*/
+}
+
+
+@media screen and (max-width: 1024px) {
+img.picture {
+	position:absolute;
+	width:1024px;
+}
+div.transbox {
+	width:1024px;
+}
+
+}
+@media screen and (min-width: 1024px) {
+img.picture {
+	position:absolute;
+	width:100%;
+}
+div.transbox {
+	width:100%;
+}
+}
+
+#welcome {
+	padding-top:2em;
+	height:300px;
+	background-color:#fff;
+	color:#000;
+	background:rgba(255,255,255,0.6);
+}
+
+#title {
+	padding-top:2em;
+	height:200px;
+	background-color:#fff;
+	color:#111;
+	background:rgba(255,255,255,0.6);
+}
+
+#about {
+	padding-top:2em;
+	height:300px;
+	background-color:#757575;
+	color:#FFF;
+}
+
+#detail {
+	background-color:#FFF;
+	color:#000;
+}
+
+#abouttable {
+	text-align:justify;
+}
+#contact {
+	padding-top:2em;
+	height:620px;
+	background-color:#EEE;
+	color:#111;
+}
+#claim {
+	color:#FFF;
+	padding-top:1.5em;
+	background-color:#757575;
+	padding-bottom:1.5em;
+}
+
+#sitemap {
+	color:#FFF;
+	text-decoration: none;  
+}
+
+#overview {
+	padding-top:0;
+	height:150px;
+	color:#FFF;
+}
+
+
+#claimtable {
+	background-color:#757575;
+	font-size:100%;
+	margin-bottom:0px;
+	margin-top:1em;
+	padding-top:0;
+	color:#FFF;
+	z-index:3;
+}
+
+
+#copyright {
+	background-color:#757575;
+	width:100%;
+	text-align:center;
+	font-size:85%;
+	margin-top:0.5em;
+	color:#FFF;
+	padding:0;
+	
+}
+
+#line {
+width:1024px;
+}
+
+/*GPA*/
+table.gpa {color:#000;border:1px solid #aaa;text-align:center;}
+table.gpa caption {background-color:#fff;padding: 5px 5px;border:1px solid #aaa;border-bottom:0px;}
+table.gpa tr {background-color:#fff;}
+table.gpa tr:hover {color:#000;background-color:#AAA;}
+table.gpa td {display: table-cell;border:1px solid #aaa;border-bottom:0px;border-top:0px;}
+table.gpa th {display: table-cell;border:1px solid #aaa;border-bottom:0px;border-top:0px;}
+
+/*awards*/
+
+table.awards {color:#000;border:1px solid #aaa;text-align:center}
+table.awards caption {background-color:#fff;padding: 5px 5px;border:1px solid #aaa;border-bottom:0px;}
+table.awards tr {background-color:#fff;}
+table.awards tr:hover {color:#000;background-color:#AAA;}
+table.awards td {display: table-cell;border:1px solid #aaa;border-bottom:0px;border-top:0px;}
+table.awards th {display: table-cell;border:1px solid #aaa;border-top:0px;}
