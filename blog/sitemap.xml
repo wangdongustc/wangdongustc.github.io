@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.wangdongustc.com/blog/blog/2016/03/20/hello-world/</loc>
+    <loc>http://www.wangdongustc.com/blog/blog/2016/07/31/install-linux-on-chrome-book/</loc>
     
-    <lastmod>2016-06-14T23:50:56.880Z</lastmod>
+    <lastmod>2016-08-01T00:03:57.368Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wangdongustc.com/blog/blog/2016/07/31/hello-world/</loc>
+    
+    <lastmod>2016-08-01T00:01:23.466Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.wangdongustc.com/blog/900-Days/index.html</loc>
     
-    <lastmod>2016-06-14T23:41:07.981Z</lastmod>
+    <lastmod>2016-06-14T23:41:07.000Z</lastmod>
     
   </url>
   

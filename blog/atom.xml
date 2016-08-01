@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://www.wangdongustc.com/blog/"/>
-  <updated>2016-06-14T23:50:56.880Z</updated>
+  <updated>2016-08-01T00:03:57.368Z</updated>
   <id>http://www.wangdongustc.com/blog/</id>
   
   <author>
@@ -16,15 +16,92 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在 Chromebook 上装 Linux</title>
+    <link href="http://www.wangdongustc.com/blog/2016/07/31/install-linux-on-chrome-book/"/>
+    <id>http://www.wangdongustc.com/blog/2016/07/31/install-linux-on-chrome-book/</id>
+    <published>2016-08-01T00:03:57.379Z</published>
+    <updated>2016-08-01T00:03:57.368Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0x00-Chromebook-只能用-Google-Chrome的笔记本&quot;&gt;&lt;a href=&quot;#0x00-Chromebook-只能用-Google-Chrome的笔记本&quot; class=&quot;headerlink&quot; title=&quot;0x00 Chromebook: 只能用 Google Chrome的笔记本&quot;&gt;&lt;/a&gt;0x00 Chromebook: 只能用 Google Chrome的笔记本&lt;/h2&gt;&lt;p&gt;虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 &lt;a href=&quot;https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android on Chrome OS&lt;/a&gt; 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。&lt;/p&gt;
+&lt;p&gt;因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 &lt;a href=&quot;https://github.com/dnschneid/crouton&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Crouton&lt;/a&gt; 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。&lt;/p&gt;
+&lt;p&gt;本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;0x01-解锁开发者模式&quot;&gt;&lt;a href=&quot;#0x01-解锁开发者模式&quot; class=&quot;headerlink&quot; title=&quot;0x01 解锁开发者模式&quot;&gt;&lt;/a&gt;0x01 解锁开发者模式&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/acer-c720-chromebook&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chromium 网站&lt;/a&gt;上有如何将 Chromebook 切换到 developer mode:&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;To invoke Recovery mode, you hold down the &lt;em&gt;ESC&lt;/em&gt; and &lt;em&gt;Refresh (F3)&lt;/em&gt; keys and poke the Power button.&lt;/cite&gt;&lt;/p&gt;
+&lt;p&gt;To enter Dev-mode you first invoke Recovery, and at the Recovery screen press &lt;em&gt;Ctrl-D&lt;/em&gt; (there’s no prompt - you have to know to do it). It will ask you to confirm, then reboot into dev-mode.&lt;/p&gt;
+&lt;p&gt;就是按住 ESC 和 刷新键 (F2) 后按开关启动，就可以进入一个警告界面。等待30s或者按 Ctrl-D 即可继续开机。&lt;/p&gt;
+&lt;h2 id=&quot;0x02-修复盘制作&quot;&gt;&lt;a href=&quot;#0x02-修复盘制作&quot; class=&quot;headerlink&quot; title=&quot;0x02 修复盘制作&quot;&gt;&lt;/a&gt;0x02 修复盘制作&lt;/h2&gt;&lt;p&gt;参考 &lt;a href=&quot;https://support.google.com/chromebook/answer/1080595?hl=en&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome OS&lt;/a&gt; 官方的帮助文档，方法为：&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;On the working computer (not the Chromebook with the error), &lt;a href=&quot;https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;install the recovery app&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Open the app and follow the on-screen instructions to create the recovery media.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Open the Chromebook you want to recover.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;f you have anything connected to this Chromebook (such as a mouse, SD card, or external hard drive), remove it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Enter recovery mode:&lt;/p&gt;
+&lt;p&gt; If you have a Chromebook with a keyboard, press and hold Esc + Refresh Refresh, then press Power Power. Let go of Power, then let go of the other keys.&lt;br&gt; If you have a Chromebox or Chromebit, turn it off, press its recovery button, then press the Power button to turn it back on. To find the location of the recovery button, see the user manual.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You’ll see one of these messages:&lt;/p&gt;
+&lt;p&gt; “Chrome OS is missing or damaged. Please insert a recovery USB stick or SD card.”&lt;br&gt; “Please insert a recovery USB stick or SD card.”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Insert the recovery media you’ve created (SD card or USB drive).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Follow the on-screen instructions.&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其实就是下载那个App，然后创建一个SD卡就可以了用来恢复 ChromeOS了。&lt;/p&gt;
+&lt;h2 id=&quot;0x03-开启-SeaBIOS&quot;&gt;&lt;a href=&quot;#0x03-开启-SeaBIOS&quot; class=&quot;headerlink&quot; title=&quot;0x03 开启 SeaBIOS&quot;&gt;&lt;/a&gt;0x03 开启 SeaBIOS&lt;/h2&gt;&lt;p&gt;参考 Arch Linux 的安装指南，如何在 &lt;a href=&quot;https://wiki.archlinux.org/index.php/Chrome_OS_devices&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chromebook 上安装&lt;/a&gt;。内容十分详细。&lt;br&gt;在 Dell 7310 上，安装 SeaBIOS 的方法是&lt;a href=&quot;https://github.com/Kerryliu/Native-Linux-on-Dell-Chromebook-13/wiki/Enabling-Legacy-Boot&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考&lt;/a&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;脚本&lt;br&gt;这些代码的运行方法为，在 Chrome 界面按 Ctrl+Alt+t 调出 terminal, 打 shell 进入 bash 后操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; flash_chromebook_rom.sh; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -k -L -O https://johnlewis.ie/flash_chromebook_rom.sh; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo -E bash flash_chromebook_rom.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;命令&lt;br&gt;运行完脚本之后，以 root 身份输入：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;crossystem dev_boot_usb=1 dev_boot_legacy=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;来启用USB启动。&lt;/p&gt;
+&lt;p&gt;安装了之后，系统就可以在开机启动U盘了。开机启动时候，按 Ctrl+L 即可进入启动菜单选项。&lt;/p&gt;
+&lt;h2 id=&quot;0x04-USB-启动介质制作&quot;&gt;&lt;a href=&quot;#0x04-USB-启动介质制作&quot; class=&quot;headerlink&quot; title=&quot;0x04 USB 启动介质制作&quot;&gt;&lt;/a&gt;0x04 USB 启动介质制作&lt;/h2&gt;&lt;p&gt;测试发现 opensuse Tumbleweed 安装会有问题，Ubuntu Mate 和 普通 desktop 也没有成功。最后用 Fedora 24 十分完美的安装成功了。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先是 Fedora 下载，Workstation 版&lt;a href=&quot;https://getfedora.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;由此下载&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;U盘启动制作器，可用的有很多，比如 &lt;a href=&quot;http://www.majorgeeks.com/files/details/imageusb.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ImageUSB&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;按照步骤，在另一台电脑上制作启动U盘，记得校验是否成功。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;制作完毕后，这个U盘就可以用来给普通电脑安装 Fedora 了。&lt;/p&gt;
+&lt;h2 id=&quot;0x05-安装！&quot;&gt;&lt;a href=&quot;#0x05-安装！&quot; class=&quot;headerlink&quot; title=&quot;0x05 安装！&quot;&gt;&lt;/a&gt;0x05 安装！&lt;/h2&gt;&lt;p&gt;给 Chromebook 插上制作好的U盘，按开机启动。然后：&lt;/p&gt;
+&lt;p&gt;在30s之内按下 Ctrl-l， 进入 SeaBIOS。接着按提示按下 ESC，选择 USB blablabla…&lt;/p&gt;
+&lt;p&gt;之后就进入和在正常电脑上一样的安装过程，按提示进行即可。需要注意的是在选择磁盘的时候，可以把所有的分区都擦掉，把为数不多的16G全部留给 Fedora。我分配的是 500M boot + 1.5G swap + 13.5G ext4 /。使用过程中交换空间还是使用了一部分的，相比与我的11年 Lenovo 老大哥, 直观上还是略逊一筹的。&lt;/p&gt;
+&lt;h2 id=&quot;0x06-后记&quot;&gt;&lt;a href=&quot;#0x06-后记&quot; class=&quot;headerlink&quot; title=&quot;0x06 后记&quot;&gt;&lt;/a&gt;0x06 后记&lt;/h2&gt;&lt;p&gt;至此，Fedora Linux 已经安装在 Chromebook 上了。但是每次开机都必须在30s内按 Ctrl-l 然后 ESC 才会进入 Grub，否则会出现 “Chrome OS 损坏”之类的字样。Google 对 bootloader 的封装还是十分严密的。如果要直接启动 Fedora，就要拆机后拆除&lt;em&gt;写保护螺钉&lt;/em&gt;。总之安装 linux 有风险，但是安装好之后的感觉，比 Chrome OS 不知道高到哪里去了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/img/install-linux-on-chrome-book/Screenshot.png&quot; alt=&quot;桌面截图&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x00-Chromebook-只能用-Google-Chrome的笔记本&quot;&gt;&lt;a href=&quot;#0x00-Chromebook-只能用-Google-Chrome的笔记本&quot; class=&quot;headerlink&quot; title=&quot;0x00 Chromebook: 只能用 Google Chrome的笔记本&quot;&gt;&lt;/a&gt;0x00 Chromebook: 只能用 Google Chrome的笔记本&lt;/h2&gt;&lt;p&gt;虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 &lt;a href=&quot;https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps&quot;&gt;Android on Chrome OS&lt;/a&gt; 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。&lt;/p&gt;
+&lt;p&gt;因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 &lt;a href=&quot;https://github.com/dnschneid/crouton&quot;&gt;Crouton&lt;/a&gt; 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。&lt;/p&gt;
+&lt;p&gt;本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
-    <link href="http://www.wangdongustc.com/blog/2016/03/20/hello-world/"/>
-    <id>http://www.wangdongustc.com/blog/2016/03/20/hello-world/</id>
-    <published>2016-03-20T09:04:49.100Z</published>
-    <updated>2016-06-14T23:50:56.880Z</updated>
+    <link href="http://www.wangdongustc.com/blog/2016/07/31/hello-world/"/>
+    <id>http://www.wangdongustc.com/blog/2016/07/31/hello-world/</id>
+    <published>2016-08-01T00:01:23.473Z</published>
+    <updated>2016-08-01T00:01:23.466Z</updated>
     
     <content type="html">&lt;p&gt;原来已经有了一个“Hello World”了。&lt;/p&gt;
 &lt;h2 id=&quot;哈哈哈&quot;&gt;&lt;a href=&quot;#哈哈哈&quot; class=&quot;headerlink&quot; title=&quot;哈哈哈&quot;&gt;&lt;/a&gt;哈哈哈&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;string&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;built_in&quot;&gt;endl&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;img src=&quot;/img/test.jpg&quot; alt=&quot;图片要是显示不了……&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;下面的内容是本来就有的…&lt;/p&gt;
 &lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
@@ -39,7 +116,8 @@
     <summary type="html">
     
       &lt;p&gt;原来已经有了一个“Hello World”了。&lt;/p&gt;
-&lt;h2 id=&quot;哈哈哈&quot;&gt;&lt;a href=&quot;#哈哈哈&quot; class=&quot;headerlink&quot; title=&quot;哈哈哈&quot;&gt;&lt;/a&gt;哈哈哈&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;
+&lt;h2 id=&quot;哈哈哈&quot;&gt;&lt;a href=&quot;#哈哈哈&quot; class=&quot;headerlink&quot; title=&quot;哈哈哈&quot;&gt;&lt;/a&gt;哈哈哈&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;string&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;built_in&quot;&gt;endl&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;/img/test.jpg&quot; alt=&quot;图片要是显示不了……&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
     

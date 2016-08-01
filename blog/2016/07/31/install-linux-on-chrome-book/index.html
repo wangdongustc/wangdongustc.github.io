@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在 Chromebook 上装 Linux | 小叮当走失在1995</title>
+  <meta name="author" content="Darren Wang">
+  
+  <meta name="description" content="0x00 Chromebook: 只能用 Google Chrome的笔记本虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 Android on Chrome OS 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。
+因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 Crouton 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。
+本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="在 Chromebook 上装 Linux"/>
+  <meta property="og:site_name" content="小叮当走失在1995"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/blog/favicon.png" rel="icon">
+  <link rel="alternate" href="/blog/atom.xml" title="小叮当走失在1995" type="application/atom+xml">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/blog/">小叮当走失在1995</a></h1>
+  <h2><a href="/blog/">苟利国家生死以，岂因祸福避趋之</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/blog/">Home</a></li>
+    
+      <li><a href="/blog/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-08-01T00:03:57.379Z"><a href="/blog/2016/07/31/install-linux-on-chrome-book/">2016-07-31</a></time>
+      
+      
+  
+    <h1 class="title">在 Chromebook 上装 Linux</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="0x00-Chromebook-只能用-Google-Chrome的笔记本"><a href="#0x00-Chromebook-只能用-Google-Chrome的笔记本" class="headerlink" title="0x00 Chromebook: 只能用 Google Chrome的笔记本"></a>0x00 Chromebook: 只能用 Google Chrome的笔记本</h2><p>虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 <a href="https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps" target="_blank" rel="external">Android on Chrome OS</a> 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。</p>
+<p>因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 <a href="https://github.com/dnschneid/crouton" target="_blank" rel="external">Crouton</a> 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。</p>
+<p>本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。<br><a id="more"></a></p>
+<h2 id="0x01-解锁开发者模式"><a href="#0x01-解锁开发者模式" class="headerlink" title="0x01 解锁开发者模式"></a>0x01 解锁开发者模式</h2><p><a href="https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/acer-c720-chromebook" target="_blank" rel="external">Chromium 网站</a>上有如何将 Chromebook 切换到 developer mode:</p>
+<p><cite>To invoke Recovery mode, you hold down the <em>ESC</em> and <em>Refresh (F3)</em> keys and poke the Power button.</cite></p>
+<p>To enter Dev-mode you first invoke Recovery, and at the Recovery screen press <em>Ctrl-D</em> (there’s no prompt - you have to know to do it). It will ask you to confirm, then reboot into dev-mode.</p>
+<p>就是按住 ESC 和 刷新键 (F2) 后按开关启动，就可以进入一个警告界面。等待30s或者按 Ctrl-D 即可继续开机。</p>
+<h2 id="0x02-修复盘制作"><a href="#0x02-修复盘制作" class="headerlink" title="0x02 修复盘制作"></a>0x02 修复盘制作</h2><p>参考 <a href="https://support.google.com/chromebook/answer/1080595?hl=en" target="_blank" rel="external">Chrome OS</a> 官方的帮助文档，方法为：</p>
+<p><cite></cite></p>
+<ol>
+<li><p>On the working computer (not the Chromebook with the error), <a href="https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai" target="_blank" rel="external">install the recovery app</a></p>
+</li>
+<li><p>Open the app and follow the on-screen instructions to create the recovery media.</p>
+</li>
+<li><p>Open the Chromebook you want to recover.</p>
+</li>
+<li><p>f you have anything connected to this Chromebook (such as a mouse, SD card, or external hard drive), remove it.</p>
+</li>
+<li><p>Enter recovery mode:</p>
+<p> If you have a Chromebook with a keyboard, press and hold Esc + Refresh Refresh, then press Power Power. Let go of Power, then let go of the other keys.<br> If you have a Chromebox or Chromebit, turn it off, press its recovery button, then press the Power button to turn it back on. To find the location of the recovery button, see the user manual.</p>
+</li>
+<li><p>You’ll see one of these messages:</p>
+<p> “Chrome OS is missing or damaged. Please insert a recovery USB stick or SD card.”<br> “Please insert a recovery USB stick or SD card.”</p>
+</li>
+<li><p>Insert the recovery media you’ve created (SD card or USB drive).</p>
+</li>
+<li><p>Follow the on-screen instructions.<br></p>
+</li>
+</ol>
+<p>其实就是下载那个App，然后创建一个SD卡就可以了用来恢复 ChromeOS了。</p>
+<h2 id="0x03-开启-SeaBIOS"><a href="#0x03-开启-SeaBIOS" class="headerlink" title="0x03 开启 SeaBIOS"></a>0x03 开启 SeaBIOS</h2><p>参考 Arch Linux 的安装指南，如何在 <a href="https://wiki.archlinux.org/index.php/Chrome_OS_devices" target="_blank" rel="external">Chromebook 上安装</a>。内容十分详细。<br>在 Dell 7310 上，安装 SeaBIOS 的方法是<a href="https://github.com/Kerryliu/Native-Linux-on-Dell-Chromebook-13/wiki/Enabling-Legacy-Boot" target="_blank" rel="external">参考</a>：</p>
+<ol>
+<li>脚本<br>这些代码的运行方法为，在 Chrome 界面按 Ctrl+Alt+t 调出 terminal, 打 shell 进入 bash 后操作。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>;</span><br><span class="line">rm <span class="_">-f</span> flash_chromebook_rom.sh; </span><br><span class="line">curl -k -L -O https://johnlewis.ie/flash_chromebook_rom.sh; </span><br><span class="line">sudo -E bash flash_chromebook_rom.sh</span><br></pre></td></tr></table></figure>
+<ol>
+<li>命令<br>运行完脚本之后，以 root 身份输入：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crossystem dev_boot_usb=1 dev_boot_legacy=1</span><br></pre></td></tr></table></figure>
+<p>来启用USB启动。</p>
+<p>安装了之后，系统就可以在开机启动U盘了。开机启动时候，按 Ctrl+L 即可进入启动菜单选项。</p>
+<h2 id="0x04-USB-启动介质制作"><a href="#0x04-USB-启动介质制作" class="headerlink" title="0x04 USB 启动介质制作"></a>0x04 USB 启动介质制作</h2><p>测试发现 opensuse Tumbleweed 安装会有问题，Ubuntu Mate 和 普通 desktop 也没有成功。最后用 Fedora 24 十分完美的安装成功了。</p>
+<ol>
+<li><p>首先是 Fedora 下载，Workstation 版<a href="https://getfedora.org/" target="_blank" rel="external">由此下载</a>。</p>
+</li>
+<li><p>U盘启动制作器，可用的有很多，比如 <a href="http://www.majorgeeks.com/files/details/imageusb.html" target="_blank" rel="external">ImageUSB</a></p>
+</li>
+<li><p>按照步骤，在另一台电脑上制作启动U盘，记得校验是否成功。</p>
+</li>
+</ol>
+<p>制作完毕后，这个U盘就可以用来给普通电脑安装 Fedora 了。</p>
+<h2 id="0x05-安装！"><a href="#0x05-安装！" class="headerlink" title="0x05 安装！"></a>0x05 安装！</h2><p>给 Chromebook 插上制作好的U盘，按开机启动。然后：</p>
+<p>在30s之内按下 Ctrl-l， 进入 SeaBIOS。接着按提示按下 ESC，选择 USB blablabla…</p>
+<p>之后就进入和在正常电脑上一样的安装过程，按提示进行即可。需要注意的是在选择磁盘的时候，可以把所有的分区都擦掉，把为数不多的16G全部留给 Fedora。我分配的是 500M boot + 1.5G swap + 13.5G ext4 /。使用过程中交换空间还是使用了一部分的，相比与我的11年 Lenovo 老大哥, 直观上还是略逊一筹的。</p>
+<h2 id="0x06-后记"><a href="#0x06-后记" class="headerlink" title="0x06 后记"></a>0x06 后记</h2><p>至此，Fedora Linux 已经安装在 Chromebook 上了。但是每次开机都必须在30s内按 Ctrl-l 然后 ESC 才会进入 Grub，否则会出现 “Chrome OS 损坏”之类的字样。Google 对 bootloader 的封装还是十分严密的。如果要直接启动 Fedora，就要拆机后拆除<em>写保护螺钉</em>。总之安装 linux 有风险，但是安装好之后的感觉，比 Chrome OS 不知道高到哪里去了。</p>
+<p><img src="/blog/img/install-linux-on-chrome-book/Screenshot.png" alt="桌面截图"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Kommentare</h1>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="" data-title="在 Chromebook 上装 Linux" data-url=""></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangdong115"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:www.wangdongustc.com/blog">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <table align="center" id="claimtable">
+		<tr>
+			<td>特别鸣谢：我的家人，朋友，老师，以及</td>
+			<td><div class="item" > &nbsp;我的女朋友文文妹<div class="tooltip" style="z-index:3"><img src="/img/gf.png" width="280px"><div class="arrow"></div></div>
+			<div class="dropface"><img src="/img/qq.png" style="margin-left:47px"></div>	
+			
+			</div>
+			</td>
+			<td>感谢他们一直以来的支持与陪伴~</td>
+		</tr>
+  </table>
+  </br>
+  
+  &copy; 2016 &nbsp;Darren Wang.&nbsp;
+  Bring to You by <a href="https://hexo.io/" target="_blank">Hexo</a> on <a href="https://github.com/" target="_blank">Github</a>. &nbsp;
+  Your IP:<script language="JavaScript" type="text/javascript" src=http://home.ustc.edu.cn/cgi-bin/myip> </script>.&nbsp;
+  
+  Access Count:
+  <!-- Start of StatCounter Code for Default Guide -->
+		<script type="text/javascript">
+		var sc_project=10001089; 
+		var sc_invisible=0; 
+		var sc_security="c0df197e"; 
+		var sc_text=2; 
+		var scJsHost = (("https:" == document.location.protocol) ?
+		"https://secure." : "http://www.");
+		document.write("<sc"+"ript type='text/javascript' src='" +
+		scJsHost+
+		"statcounter.com/counter/counter.js'></"+"script>");
+		</script>
+		<noscript>
+		<div class="statcounter"><a title="shopify site
+		analytics" href="http://statcounter.com/shopify/"
+		target="_blank"><img class="statcounter"
+		src="http://c.statcounter.com/10001089/0/c0df197e/0/"
+		alt="shopify site analytics"></a></div>
+		</noscript>
+<!-- End of StatCounter Code for Default Guide -->.
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
