@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://www.wangdongustc.com/blog/"/>
-  <updated>2016-10-09T10:44:20.854Z</updated>
+  <updated>2016-10-09T11:05:07.438Z</updated>
   <id>http://www.wangdongustc.com/blog/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.wangdongustc.com/blog/2016/10/09/tempture-and-battery-control-on-chromebook/"/>
     <id>http://www.wangdongustc.com/blog/2016/10/09/tempture-and-battery-control-on-chromebook/</id>
     <published>2016-10-09T09:31:16.000Z</published>
-    <updated>2016-10-09T10:44:20.854Z</updated>
+    <updated>2016-10-09T11:05:07.438Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00-Linux-on-Chromebook-存在小Bug&quot;&gt;&lt;a href=&quot;#0x00-Linux-on-Chromebook-存在小Bug&quot; class=&quot;headerlink&quot; title=&quot;0x00 Linux on Chromebook: 存在小Bug&quot;&gt;&lt;/a&gt;0x00 Linux on Chromebook: 存在小Bug&lt;/h2&gt;&lt;p&gt;之前给 Dell CHromebook 7310 装了 linux Fedora 24 之后，开 Chrome 看视频就会莫名其妙的卡住，然后只能强制关机重启 （长按电源按键）。有一次看 Youtube 视频开了全屏，卡死之后长按电源按键也不再有用，包括合盖也不会熄屏，因此置之不理。第二天去看时候已经完全无法开机，充上电后开机 CPU 发烫，但无法进入 BIOS。无奈叫了 Dell 的保修服务，后维修单显示更换了 &lt;strong&gt;主板&lt;/strong&gt;，&lt;strong&gt;网卡&lt;/strong&gt;之后才可以开机。&lt;/p&gt;
 &lt;p&gt;根据一些网上的信息，貌似是在刷写 &lt;a href=&quot;https://johnlewis.ie/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SeaBios&lt;/a&gt;时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。&lt;/p&gt;
@@ -61,6 +61,7 @@
 &lt;p&gt;来让 g++ 在编译和链接的时候不懵逼。&lt;/p&gt;
 &lt;h2 id=&quot;0x04-效果检验&quot;&gt;&lt;a href=&quot;#0x04-效果检验&quot; class=&quot;headerlink&quot; title=&quot;0x04 效果检验&quot;&gt;&lt;/a&gt;0x04 效果检验&lt;/h2&gt;&lt;p&gt;最终的效果就是在系统出现 电量低的时候进行倒计时关机，温度升高过快时提示，达到80度通知关闭部分程序，到了85度就直接半秒内关机。用 dex-autostart 将程序包装成 .desktop 程序，然后放入 ~/.config/autostart 文件夹，开机 login 进入 Gnome 后便可自动执行程序。&lt;/p&gt;
 &lt;p&gt;程序对温度的敏感度，警告和关机温度以及电量都可以在程序中定义。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/img/tempture-and-battery-control-on-chromebook/result.png&quot; alt=&quot;通知&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;0x05-总结&quot;&gt;&lt;a href=&quot;#0x05-总结&quot; class=&quot;headerlink&quot; title=&quot;0x05 总结&quot;&gt;&lt;/a&gt;0x05 总结&lt;/h2&gt;&lt;p&gt;总而言之虽然程序完成了指定的功能，而且可以防止电量过低或者温度过高而导致不可修复的损坏，但整体的逻辑有一些问题。比如说程序主动关机可能损坏用户的当前工作(? 很好奇为什么 reboot, init 0 这样的程序都不需要 root 权限就可以执行)。&lt;/p&gt;
 &lt;p&gt;另外程序的性能也有问题，比如在一个循环内申请/释放内存（通过 new 和 delete 来创建和释放类），本来程序写成直接返回类，但那样看起来很危险；还有多处返回 string 类。很怕程序会内存泄露，毕竟会一直在后台运行，却不会做泄漏检查。想当程序员，还有很长的路要走啊。。 &lt;/p&gt;
 </content>
