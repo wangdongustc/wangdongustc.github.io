@@ -1,0 +1,68 @@
+header {
+  background: #488FCE;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index:3;
+}
+
+/* ------------------------------------------
+  RESPONSIVE NAV STYLES
+--------------------------------------------- */
+
+.nav-collapse ul {
+  margin: auto;
+  padding: 0;
+  
+  list-style: none;
+  position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+.nav-collapse ul {
+width: 1000px;
+}
+}
+
+@media screen and (max-width: 1024px ) {
+.nav-collapse ul {
+width: 700px;
+}
+}
+
+
+.nav-collapse li {
+   float: left;
+   width: auto;
+}
+
+
+.nav-collapse,
+.nav-collapse * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+  
+.nav-collapse a {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	border-top: 0;
+	text-decoration: none;
+	text-align: center;
+	font-size:87.5%;
+	background: #488FCE;
+    padding: 1.02em 1.5em;
+	color: #fff;
+	width: 100%;
+	float: left;
+	margin: 0;
+}
+
+.active a {
+  background: #3B7FC4;
+  color: #FFF;
+}
+
+

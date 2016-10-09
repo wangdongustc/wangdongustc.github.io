@@ -1,0 +1,170 @@
+body {
+	background-color:#f0f0f0;
+	font-family:"Droid Serif",Georgia,"Times New Roman",STHeiti,serif;
+}
+
+h1,h2,h3,p {
+	color:#222;
+	font-family:"Droid Serif";
+	padding-left:50px;
+	padding-right:50px;
+}
+
+h2 {
+	font-size:1.3em;
+	font-style:bold;
+	padding-top:1em;
+	
+}
+
+p {
+
+}
+
+div.bodybox {
+	margin: auto;
+	position:relative;
+	top: 4em;
+	background:#fefefe;
+	border:0px solid black;
+}
+
+
+div .mainbox {
+	margin-left:0;
+	position:absolute;
+	width:700px;
+}
+
+div .catabox {
+	position:absolute;
+	margin-left:700px;
+	width:300px;
+}
+
+.picture_hor {
+	width:700px;
+}
+
+@media screen and (min-width: 1024px) {
+div.bodybox {
+	width:1000px;
+}
+
+#line {
+	width:1000px;
+}
+}
+
+
+
+@media screen and (max-width: 1024px) {
+div.bodybox {
+	width:700px;
+}
+div .catabox {
+	display:none;
+}
+
+
+#line {
+	width:700px;
+}
+.headpic {
+display:none;
+}
+}
+
+#logo{
+	color:#222;
+	font-family:"Droid Serif";
+	font-size:2em;
+	text-decoration: none;
+	margin-bottom:0em;
+}
+
+#discription {
+	font-family:"Droid Serif";
+	font-size: 1em;
+	text-decoration: none;
+	margin-top:0.5em;
+}
+
+#claim {
+	position:relative;
+	top:6em;
+	padding:0.5em;	
+}
+
+#claimsmall {
+display:none;
+}
+
+#small_br
+{
+display:none;
+}
+
+#claimtable {
+	font-size:85%;
+	margin-bottom:0px;
+	color:#333;
+}
+
+#copyright {
+	width:100%;
+	text-align:center;
+	font-size:85%;
+	margin-top:0.5em;
+	color:#666;
+	padding:0;
+}
+
+#morespace1 {
+display:none;
+}
+#morespace2 {
+display:none;
+}
+
+#gpacaculation {
+width:600px;
+padding-left:50px;
+}
+
+/*GPA 表格的样式*/
+table.gpa {color:#000;border:1px solid #aaa;text-align:center;}
+table.gpa caption {background-color:#fff;padding: 5px 5px;border:1px solid #aaa;border-bottom:0px;}
+table.gpa tr {background-color:#fff;}
+table.gpa tr:hover {color:#000;background-color:#AAA;}
+table.gpa td {display: table-cell;border:1px solid #aaa;border-bottom:0px;border-top:0px;}
+table.gpa th {display: table-cell;border:1px solid #aaa;border-bottom:0px;border-top:0px;}
+
+/*另一种表格的样式*/
+
+table.awards {color:#000;border:1px solid #aaa;text-align:center}
+table.awards caption {background-color:#fff;padding: 5px 5px;border:1px solid #aaa;border-bottom:0px;}
+table.awards tr {background-color:#fff;}
+table.awards tr:hover {color:#000;background-color:#AAA;}
+table.awards td {display: table-cell;border:1px solid #aaa;border-bottom:0px;border-top:0px;}
+table.awards th {display: table-cell;border:1px solid #aaa;border-top:0px;}
+
+
+.headpic{
+margin-top: -1000px;
+left:700px;
+width:250px;
+position:absolute;
+z-index=0;
+-webkit-transition: margin 0.2s ease-in-out;
+-moz-transition: margin 0.2s ease-in-out;
+}
+
+
+.namepic:hover .headpic {
+margin-top:-50px;
+left:700px;
+-webkit-transition: margin 0.2s ease-in-out;
+-moz-transition: margin 0.2s ease-in-out;
+z-index:2;
+}

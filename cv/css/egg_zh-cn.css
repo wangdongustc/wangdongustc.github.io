@@ -1,0 +1,46 @@
+.tooltip p { font-family: sans-serif;
+             font-size:14px;
+  font-weight:300;}
+
+.tooltip { width:284px;
+           padding:10px;
+           border-radius:3px;
+           position:absolute;
+           box-shadow:1px 1px 10px 0 #ccc;
+           margin: -6000px 0 0 -20px;
+           background:#fff;
+           -webkit-transition:margin .3s ease-in-out;
+          -moz-transition:margin .3s ease-in-out;}
+
+.item:hover  {  background:#aaa;}
+
+.item:hover .tooltip {
+           margin:-440px 0 0 -40px;
+           -webkit-transition: margin .3s ease-in-out;
+  -moz-transition: margin .3s ease-in-out;}
+
+.arrow {
+  position:absolute;
+  margin:10px 0 0 50px;
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #fff;
+}
+
+.dropface{
+margin-top: -6000px;
+position:absolute;
+width:24px;
+-webkit-transition:margin 1.7s ease-in-out;
+-moz-transition:margin 1.7s ease-in-out;
+}
+
+
+.item:hover .dropface {
+margin-top:-23px;
+-webkit-transition: margin 1.6s ease-in-out;
+-moz-transition: margin 1.6s ease-in-out;}
+
+

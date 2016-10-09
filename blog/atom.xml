@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://www.wangdongustc.com/blog/"/>
-  <updated>2016-08-01T00:03:57.368Z</updated>
+  <updated>2016-10-09T10:44:20.854Z</updated>
   <id>http://www.wangdongustc.com/blog/</id>
   
   <author>
@@ -16,75 +16,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>在 Chromebook 上装 Linux</title>
-    <link href="http://www.wangdongustc.com/blog/2016/07/31/install-linux-on-chrome-book/"/>
-    <id>http://www.wangdongustc.com/blog/2016/07/31/install-linux-on-chrome-book/</id>
-    <published>2016-08-01T00:03:57.379Z</published>
-    <updated>2016-08-01T00:03:57.368Z</updated>
+    <title>Chromebook 在 Fedora 24 下的温度控制</title>
+    <link href="http://www.wangdongustc.com/blog/2016/10/09/tempture-and-battery-control-on-chromebook/"/>
+    <id>http://www.wangdongustc.com/blog/2016/10/09/tempture-and-battery-control-on-chromebook/</id>
+    <published>2016-10-09T09:31:16.000Z</published>
+    <updated>2016-10-09T10:44:20.854Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;0x00-Chromebook-只能用-Google-Chrome的笔记本&quot;&gt;&lt;a href=&quot;#0x00-Chromebook-只能用-Google-Chrome的笔记本&quot; class=&quot;headerlink&quot; title=&quot;0x00 Chromebook: 只能用 Google Chrome的笔记本&quot;&gt;&lt;/a&gt;0x00 Chromebook: 只能用 Google Chrome的笔记本&lt;/h2&gt;&lt;p&gt;虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 &lt;a href=&quot;https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android on Chrome OS&lt;/a&gt; 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。&lt;/p&gt;
-&lt;p&gt;因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 &lt;a href=&quot;https://github.com/dnschneid/crouton&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Crouton&lt;/a&gt; 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。&lt;/p&gt;
-&lt;p&gt;本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;0x01-解锁开发者模式&quot;&gt;&lt;a href=&quot;#0x01-解锁开发者模式&quot; class=&quot;headerlink&quot; title=&quot;0x01 解锁开发者模式&quot;&gt;&lt;/a&gt;0x01 解锁开发者模式&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/acer-c720-chromebook&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chromium 网站&lt;/a&gt;上有如何将 Chromebook 切换到 developer mode:&lt;/p&gt;
-&lt;p&gt;&lt;cite&gt;To invoke Recovery mode, you hold down the &lt;em&gt;ESC&lt;/em&gt; and &lt;em&gt;Refresh (F3)&lt;/em&gt; keys and poke the Power button.&lt;/cite&gt;&lt;/p&gt;
-&lt;p&gt;To enter Dev-mode you first invoke Recovery, and at the Recovery screen press &lt;em&gt;Ctrl-D&lt;/em&gt; (there’s no prompt - you have to know to do it). It will ask you to confirm, then reboot into dev-mode.&lt;/p&gt;
-&lt;p&gt;就是按住 ESC 和 刷新键 (F2) 后按开关启动，就可以进入一个警告界面。等待30s或者按 Ctrl-D 即可继续开机。&lt;/p&gt;
-&lt;h2 id=&quot;0x02-修复盘制作&quot;&gt;&lt;a href=&quot;#0x02-修复盘制作&quot; class=&quot;headerlink&quot; title=&quot;0x02 修复盘制作&quot;&gt;&lt;/a&gt;0x02 修复盘制作&lt;/h2&gt;&lt;p&gt;参考 &lt;a href=&quot;https://support.google.com/chromebook/answer/1080595?hl=en&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome OS&lt;/a&gt; 官方的帮助文档，方法为：&lt;/p&gt;
-&lt;p&gt;&lt;cite&gt;&lt;/cite&gt;&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;0x00-Linux-on-Chromebook-存在小Bug&quot;&gt;&lt;a href=&quot;#0x00-Linux-on-Chromebook-存在小Bug&quot; class=&quot;headerlink&quot; title=&quot;0x00 Linux on Chromebook: 存在小Bug&quot;&gt;&lt;/a&gt;0x00 Linux on Chromebook: 存在小Bug&lt;/h2&gt;&lt;p&gt;之前给 Dell CHromebook 7310 装了 linux Fedora 24 之后，开 Chrome 看视频就会莫名其妙的卡住，然后只能强制关机重启 （长按电源按键）。有一次看 Youtube 视频开了全屏，卡死之后长按电源按键也不再有用，包括合盖也不会熄屏，因此置之不理。第二天去看时候已经完全无法开机，充上电后开机 CPU 发烫，但无法进入 BIOS。无奈叫了 Dell 的保修服务，后维修单显示更换了 &lt;strong&gt;主板&lt;/strong&gt;，&lt;strong&gt;网卡&lt;/strong&gt;之后才可以开机。&lt;/p&gt;
+&lt;p&gt;根据一些网上的信息，貌似是在刷写 &lt;a href=&quot;https://johnlewis.ie/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SeaBios&lt;/a&gt;时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。&lt;/p&gt;
+&lt;h2 id=&quot;0x01-问题需求&quot;&gt;&lt;a href=&quot;#0x01-问题需求&quot; class=&quot;headerlink&quot; title=&quot;0x01 问题需求&quot;&gt;&lt;/a&gt;0x01 问题需求&lt;/h2&gt;&lt;p&gt;因此想到至少需要试着解决如下问题：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;On the working computer (not the Chromebook with the error), &lt;a href=&quot;https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;install the recovery app&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Open the app and follow the on-screen instructions to create the recovery media.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Open the Chromebook you want to recover.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;f you have anything connected to this Chromebook (such as a mouse, SD card, or external hard drive), remove it.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Enter recovery mode:&lt;/p&gt;
-&lt;p&gt; If you have a Chromebook with a keyboard, press and hold Esc + Refresh Refresh, then press Power Power. Let go of Power, then let go of the other keys.&lt;br&gt; If you have a Chromebox or Chromebit, turn it off, press its recovery button, then press the Power button to turn it back on. To find the location of the recovery button, see the user manual.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;You’ll see one of these messages:&lt;/p&gt;
-&lt;p&gt; “Chrome OS is missing or damaged. Please insert a recovery USB stick or SD card.”&lt;br&gt; “Please insert a recovery USB stick or SD card.”&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Insert the recovery media you’ve created (SD card or USB drive).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Follow the on-screen instructions.&lt;br&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;电池耗尽 【想到可以保留一部分电量，在10%左右低电关机】&lt;/li&gt;
+&lt;li&gt;过热    【不容易解决，因为风扇确实不转，但可以在温度达到较高水平时提示关机】&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;其实就是下载那个App，然后创建一个SD卡就可以了用来恢复 ChromeOS了。&lt;/p&gt;
-&lt;h2 id=&quot;0x03-开启-SeaBIOS&quot;&gt;&lt;a href=&quot;#0x03-开启-SeaBIOS&quot; class=&quot;headerlink&quot; title=&quot;0x03 开启 SeaBIOS&quot;&gt;&lt;/a&gt;0x03 开启 SeaBIOS&lt;/h2&gt;&lt;p&gt;参考 Arch Linux 的安装指南，如何在 &lt;a href=&quot;https://wiki.archlinux.org/index.php/Chrome_OS_devices&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chromebook 上安装&lt;/a&gt;。内容十分详细。&lt;br&gt;在 Dell 7310 上，安装 SeaBIOS 的方法是&lt;a href=&quot;https://github.com/Kerryliu/Native-Linux-on-Dell-Chromebook-13/wiki/Enabling-Legacy-Boot&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考&lt;/a&gt;：&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;现有的电源管理会在电池电量较低时提示，但貌似不会采取措施；过热时候 CPU 会降频，但还是会产生较多热量。因此想通过一个程序实现如下功能：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;脚本&lt;br&gt;这些代码的运行方法为，在 Chrome 界面按 Ctrl+Alt+t 调出 terminal, 打 shell 进入 bash 后操作。&lt;/li&gt;
+&lt;li&gt;低电而未充电时，提示用户关机，两分钟内用户不关机也要强制关机；保护电脑不坏更重要。&lt;/li&gt;
+&lt;li&gt;主板/CPU 温度过高时提示用户关闭部分高消耗的程序以减小功耗，温度增长过快时提示用户检查正在运行的程序，温度达到某设定值强制快速关机以冷却电脑；保护电脑不坏更重要。&lt;/li&gt;
+&lt;li&gt;随机启动，随时醒目提示。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; flash_chromebook_rom.sh; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -k -L -O https://johnlewis.ie/flash_chromebook_rom.sh; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo -E bash flash_chromebook_rom.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ol&gt;
-&lt;li&gt;命令&lt;br&gt;运行完脚本之后，以 root 身份输入：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;crossystem dev_boot_usb=1 dev_boot_legacy=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;来启用USB启动。&lt;/p&gt;
-&lt;p&gt;安装了之后，系统就可以在开机启动U盘了。开机启动时候，按 Ctrl+L 即可进入启动菜单选项。&lt;/p&gt;
-&lt;h2 id=&quot;0x04-USB-启动介质制作&quot;&gt;&lt;a href=&quot;#0x04-USB-启动介质制作&quot; class=&quot;headerlink&quot; title=&quot;0x04 USB 启动介质制作&quot;&gt;&lt;/a&gt;0x04 USB 启动介质制作&lt;/h2&gt;&lt;p&gt;测试发现 opensuse Tumbleweed 安装会有问题，Ubuntu Mate 和 普通 desktop 也没有成功。最后用 Fedora 24 十分完美的安装成功了。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;首先是 Fedora 下载，Workstation 版&lt;a href=&quot;https://getfedora.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;由此下载&lt;/a&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;U盘启动制作器，可用的有很多，比如 &lt;a href=&quot;http://www.majorgeeks.com/files/details/imageusb.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ImageUSB&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;按照步骤，在另一台电脑上制作启动U盘，记得校验是否成功。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;制作完毕后，这个U盘就可以用来给普通电脑安装 Fedora 了。&lt;/p&gt;
-&lt;h2 id=&quot;0x05-安装！&quot;&gt;&lt;a href=&quot;#0x05-安装！&quot; class=&quot;headerlink&quot; title=&quot;0x05 安装！&quot;&gt;&lt;/a&gt;0x05 安装！&lt;/h2&gt;&lt;p&gt;给 Chromebook 插上制作好的U盘，按开机启动。然后：&lt;/p&gt;
-&lt;p&gt;在30s之内按下 Ctrl-l， 进入 SeaBIOS。接着按提示按下 ESC，选择 USB blablabla…&lt;/p&gt;
-&lt;p&gt;之后就进入和在正常电脑上一样的安装过程，按提示进行即可。需要注意的是在选择磁盘的时候，可以把所有的分区都擦掉，把为数不多的16G全部留给 Fedora。我分配的是 500M boot + 1.5G swap + 13.5G ext4 /。使用过程中交换空间还是使用了一部分的，相比与我的11年 Lenovo 老大哥, 直观上还是略逊一筹的。&lt;/p&gt;
-&lt;h2 id=&quot;0x06-后记&quot;&gt;&lt;a href=&quot;#0x06-后记&quot; class=&quot;headerlink&quot; title=&quot;0x06 后记&quot;&gt;&lt;/a&gt;0x06 后记&lt;/h2&gt;&lt;p&gt;至此，Fedora Linux 已经安装在 Chromebook 上了。但是每次开机都必须在30s内按 Ctrl-l 然后 ESC 才会进入 Grub，否则会出现 “Chrome OS 损坏”之类的字样。Google 对 bootloader 的封装还是十分严密的。如果要直接启动 Fedora，就要拆机后拆除&lt;em&gt;写保护螺钉&lt;/em&gt;。总之安装 linux 有风险，但是安装好之后的感觉，比 Chrome OS 不知道高到哪里去了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/img/install-linux-on-chrome-book/Screenshot.png&quot; alt=&quot;桌面截图&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;0x02-依赖小工具&quot;&gt;&lt;a href=&quot;#0x02-依赖小工具&quot; class=&quot;headerlink&quot; title=&quot;0x02 依赖小工具&quot;&gt;&lt;/a&gt;0x02 依赖小工具&lt;/h2&gt;&lt;p&gt;首先是获得电量/充电信息。可通过如下小软件 &lt;strong&gt;acpi&lt;/strong&gt; 获得：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[xxx@localhost ~]$ acpi&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Battery 0: Discharging, 44%, 04:45:14 remaining&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其次是温度信息的获得，可读取传感器信息获得，软件 &lt;strong&gt;lm_sensors&lt;/strong&gt; 提供此功能：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[xxx@localhost ~]$ sensors&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;acpitz-virtual-0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Adapter: Virtual device&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;temp1:        +40.8°C  (crit = +104.0°C)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pch_wildcat_point-virtual-0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Adapter: Virtual device&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;temp1:        -50.0°C &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;coretemp-isa-0000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Adapter: ISA adapter&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Physical id 0:  +47.0°C  (high = +105.0°C, crit = +105.0°C)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Core 0:         +46.0°C  (high = +105.0°C, crit = +105.0°C)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Core 1:         +46.0°C  (high = +105.0°C, crit = +105.0°C)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其实 sensors 的输出应该包含风扇信息，而且一般通过 fancontrol 可以控制风扇行为，可通过 pwmconfig 来设置。但是在此电脑上没有显示出风扇的信息，而且 fancontrol 和 pwmconfig 相继报错，也就没办法去直接用小软件控制风扇了。&lt;/p&gt;
+&lt;p&gt;在 Fedora 24 上安装这些软件通过如下进行：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[xxx@localhost ~]$ sudo dnf install acpi lm_sensors fancontrol pwmconfig&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;0x03-程序写法&quot;&gt;&lt;a href=&quot;#0x03-程序写法&quot; class=&quot;headerlink&quot; title=&quot;0x03 程序写法&quot;&gt;&lt;/a&gt;0x03 程序写法&lt;/h2&gt;&lt;p&gt;思路是直接读取 acpi 和 sensors 程序的输出结果，从中找到电池和温度信息。然后每隔一段时间读一次，实时监控电量和温度变化。&lt;/p&gt;
+&lt;p&gt;执行程序并读取输出结果由 popen() 函数完成：&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;GetCommandOutput&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;* command)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	FILE * fstream = &lt;span class=&quot;literal&quot;&gt;NULL&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; buff[&lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt; output;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	fstream = popen(command, &lt;span class=&quot;string&quot;&gt;&quot;r&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;NULL&lt;/span&gt; == fstream) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;string&quot;&gt;&quot;Command Execution Error!&quot;&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;built_in&quot;&gt;endl&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;NULL&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;NULL&lt;/span&gt; != fgets(buff, &lt;span class=&quot;number&quot;&gt;400&lt;/span&gt;, fstream)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		output = output.append(buff);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	pclose(fstream);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; output;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后字符串分析是直接通过 string 的 find() 等函数进行的：&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;BatteryStatus* &lt;span class=&quot;title&quot;&gt;GetBatteryLevel&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	BatteryStatus *results = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BatteryStatus();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt; acpi_output = GetCommandOutput(&lt;span class=&quot;string&quot;&gt;&quot;acpi&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; index = acpi_output.find_last_of(&lt;span class=&quot;string&quot;&gt;&#39;%&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	results-&amp;gt;percentage = atoi(acpi_output.substr(index&lt;span class=&quot;number&quot;&gt;-2&lt;/span&gt;, index).c_str());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;::npos == acpi_output.find(&lt;span class=&quot;string&quot;&gt;&quot;Discharging&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		results-&amp;gt;charging = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//cout &amp;lt;&amp;lt; results.percentage &amp;lt;&amp;lt; endl;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; results;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里通过检测百分比符号来得到电量信息，通过 “Discharging” 串来判断当前是否在充电。BatteryStatus 是一个类，包含是否在充电，电量百分比成员。&lt;br&gt;判断设备温度时，因为设备个数不一定，因此使用链表来储存设备和其温度信息。其结构为：&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; DeviceTemperature &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt; device;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; temperature;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	DeviceTemperature* next_device;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;信息提取也是通过字符串分析得到的。&lt;/p&gt;
+&lt;p&gt;系统的通知是使用 libnotifymm 库来实现的，效果和方法如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/img/tempture-and-battery-control-on-chromebook/notify.png&quot; alt=&quot;通知&quot;&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;libnotifymm.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;libnotifymm/init.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;libnotifymm/notify.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;libnotifymm/notification.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// init the notifications.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Notify::init(&amp;quot;Aggressive Power Management&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;string title   = &amp;quot;Aggressive Power Management&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;string message = &amp;quot;电源和过热控制已启动&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Notify::Notification notification(title, message);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// urgency level: low/normal/critical&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;notification.set_urgency(Notify::URGENCY_NORMAL);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;notification.show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// update current notification with new title and message&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;notification.update(title, message);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;notification.close();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;main函数里面的逻辑就是在一个 while(1) 循环里面不断检查电量和温度，然后在适合的时间关机 （system(“init 0”);）。&lt;/p&gt;
+&lt;p&gt;完整的程序在 &lt;a href=&quot;https://coding.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coding.net&lt;/a&gt; 上，项目地址为 &lt;a href=&quot;https://coding.net/u/wangdong115/p/MakingWheel/git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://coding.net/u/wangdong115/p/MakingWheel/git&lt;/a&gt;，在 tmpctrl 文件夹下。&lt;/p&gt;
+&lt;p&gt;另：在 eclipse 中做这个时候，编译链接时需要在设置里添加库的路径，然后通过 &lt;/p&gt;
+&lt;p&gt;C/C++ Build-&amp;gt;Setting-&amp;gt;Gcc c Compiler-&amp;gt;Miscellaneous中添加$$(pkg-config –cflags glibmm-2.4 –cflags libnotifymm-1.0)&lt;br&gt;C/C++ Build-&amp;gt;Setting-&amp;gt;Gcc c Linker-&amp;gt;Miscellaneous中添加$$(pkg-config –libs glibmm-2.4 –libs libnotifymm-1.0)&lt;/p&gt;
+&lt;p&gt;来让 g++ 在编译和链接的时候不懵逼。&lt;/p&gt;
+&lt;h2 id=&quot;0x04-效果检验&quot;&gt;&lt;a href=&quot;#0x04-效果检验&quot; class=&quot;headerlink&quot; title=&quot;0x04 效果检验&quot;&gt;&lt;/a&gt;0x04 效果检验&lt;/h2&gt;&lt;p&gt;最终的效果就是在系统出现 电量低的时候进行倒计时关机，温度升高过快时提示，达到80度通知关闭部分程序，到了85度就直接半秒内关机。用 dex-autostart 将程序包装成 .desktop 程序，然后放入 ~/.config/autostart 文件夹，开机 login 进入 Gnome 后便可自动执行程序。&lt;/p&gt;
+&lt;p&gt;程序对温度的敏感度，警告和关机温度以及电量都可以在程序中定义。&lt;/p&gt;
+&lt;h2 id=&quot;0x05-总结&quot;&gt;&lt;a href=&quot;#0x05-总结&quot; class=&quot;headerlink&quot; title=&quot;0x05 总结&quot;&gt;&lt;/a&gt;0x05 总结&lt;/h2&gt;&lt;p&gt;总而言之虽然程序完成了指定的功能，而且可以防止电量过低或者温度过高而导致不可修复的损坏，但整体的逻辑有一些问题。比如说程序主动关机可能损坏用户的当前工作(? 很好奇为什么 reboot, init 0 这样的程序都不需要 root 权限就可以执行)。&lt;/p&gt;
+&lt;p&gt;另外程序的性能也有问题，比如在一个循环内申请/释放内存（通过 new 和 delete 来创建和释放类），本来程序写成直接返回类，但那样看起来很危险；还有多处返回 string 类。很怕程序会内存泄露，毕竟会一直在后台运行，却不会做泄漏检查。想当程序员，还有很长的路要走啊。。 &lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;0x00-Chromebook-只能用-Google-Chrome的笔记本&quot;&gt;&lt;a href=&quot;#0x00-Chromebook-只能用-Google-Chrome的笔记本&quot; class=&quot;headerlink&quot; title=&quot;0x00 Chromebook: 只能用 Google Chrome的笔记本&quot;&gt;&lt;/a&gt;0x00 Chromebook: 只能用 Google Chrome的笔记本&lt;/h2&gt;&lt;p&gt;虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 &lt;a href=&quot;https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps&quot;&gt;Android on Chrome OS&lt;/a&gt; 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。&lt;/p&gt;
-&lt;p&gt;因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 &lt;a href=&quot;https://github.com/dnschneid/crouton&quot;&gt;Crouton&lt;/a&gt; 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。&lt;/p&gt;
-&lt;p&gt;本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。&lt;br&gt;
+      &lt;h2 id=&quot;0x00-Linux-on-Chromebook-存在小Bug&quot;&gt;&lt;a href=&quot;#0x00-Linux-on-Chromebook-存在小Bug&quot; class=&quot;headerlink&quot; title=&quot;0x00 Linux on Chromebook: 存在小Bug&quot;&gt;&lt;/a&gt;0x00 Linux on Chromebook: 存在小Bug&lt;/h2&gt;&lt;p&gt;之前给 Dell CHromebook 7310 装了 linux Fedora 24 之后，开 Chrome 看视频就会莫名其妙的卡住，然后只能强制关机重启 （长按电源按键）。有一次看 Youtube 视频开了全屏，卡死之后长按电源按键也不再有用，包括合盖也不会熄屏，因此置之不理。第二天去看时候已经完全无法开机，充上电后开机 CPU 发烫，但无法进入 BIOS。无奈叫了 Dell 的保修服务，后维修单显示更换了 &lt;strong&gt;主板&lt;/strong&gt;，&lt;strong&gt;网卡&lt;/strong&gt;之后才可以开机。&lt;/p&gt;
+&lt;p&gt;根据一些网上的信息，貌似是在刷写 &lt;a href=&quot;https://johnlewis.ie/&quot;&gt;SeaBios&lt;/a&gt;时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。&lt;/p&gt;
+&lt;h2 id=&quot;0x01-问题需求&quot;&gt;&lt;a href=&quot;#0x01-问题需求&quot; class=&quot;headerlink&quot; title=&quot;0x01 问题需求&quot;&gt;&lt;/a&gt;0x01 问题需求&lt;/h2&gt;&lt;p&gt;因此想到至少需要试着解决如下问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;电池耗尽 【想到可以保留一部分电量，在10%左右低电关机】&lt;/li&gt;
+&lt;li&gt;过热    【不容易解决，因为风扇确实不转，但可以在温度达到较高水平时提示关机】&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="chromebook" scheme="http://www.wangdongustc.com/blog/tags/chromebook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>screen tips program</title>
+    <link href="http://www.wangdongustc.com/blog/2016/08/31/screen-tips-program/"/>
+    <id>http://www.wangdongustc.com/blog/2016/08/31/screen-tips-program/</id>
+    <published>2016-08-31T14:30:07.000Z</published>
+    <updated>2016-09-01T02:53:09.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0x00-家里的慢电脑&quot;&gt;&lt;a href=&quot;#0x00-家里的慢电脑&quot; class=&quot;headerlink&quot; title=&quot;0x00 家里的慢电脑&quot;&gt;&lt;/a&gt;0x00 家里的慢电脑&lt;/h2&gt;&lt;h2 id=&quot;0x01-解决方法：屏幕提示&quot;&gt;&lt;a href=&quot;#0x01-解决方法：屏幕提示&quot; class=&quot;headerlink&quot; title=&quot;0x01 解决方法：屏幕提示&quot;&gt;&lt;/a&gt;0x01 解决方法：屏幕提示&lt;/h2&gt;&lt;h2 id=&quot;0x02-技术实现&quot;&gt;&lt;a href=&quot;#0x02-技术实现&quot; class=&quot;headerlink&quot; title=&quot;0x02 技术实现&quot;&gt;&lt;/a&gt;0x02 技术实现&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x00-家里的慢电脑&quot;&gt;&lt;a href=&quot;#0x00-家里的慢电脑&quot; class=&quot;headerlink&quot; title=&quot;0x00 家里的慢电脑&quot;&gt;&lt;/a&gt;0x00 家里的慢电脑&lt;/h2&gt;&lt;h2 id=&quot;0x01-解决方法：屏幕提示&quot;&gt;&lt;a href=&quot;#0x0
     
     </summary>
     
@@ -95,8 +104,8 @@
     <title>Python with Visual Studio Code</title>
     <link href="http://www.wangdongustc.com/blog/2016/07/31/Python-with-Visual-Studio-Code/"/>
     <id>http://www.wangdongustc.com/blog/2016/07/31/Python-with-Visual-Studio-Code/</id>
-    <published>2016-07-31T04:00:00.000Z</published>
-    <updated>2016-08-01T01:41:49.085Z</updated>
+    <published>2016-07-30T16:00:00.000Z</published>
+    <updated>2016-08-01T01:41:49.000Z</updated>
     
     <content type="html">&lt;p&gt;最近发现 &lt;a href=&quot;https://code.visualstudio.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Visual Studio Code&lt;/a&gt; 真是巨硬的良心之作，不仅跨平台，而且十分的轻量级。虽说和 &lt;a href=&quot;https://atom.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Atom&lt;/a&gt; 很像，但毕竟微软的作品，其用户体验真心不错。&lt;/p&gt;
 &lt;p&gt;如下内容的 Markdown 来自与&lt;a href=&quot;https://code.visualstudio.com/docs/languages/python&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;微软(R)的 VScode 帮助页面&lt;/a&gt;的 &lt;a href=&quot;https://github.com/Microsoft/vscode-docs/blob/master/docs/languages/python.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github 开源文件&lt;/a&gt;，其协议为知识共享协议：&lt;a href=&quot;http://creativecommons.org/licenses/by/3.0/us/legalcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Creative Commons Attribution 3.0 United States License&lt;/a&gt;。&lt;/p&gt;
@@ -165,8 +174,8 @@
     <title>简单的爬虫 imgur python spider</title>
     <link href="http://www.wangdongustc.com/blog/2016/07/31/imgur-python-spider/"/>
     <id>http://www.wangdongustc.com/blog/2016/07/31/imgur-python-spider/</id>
-    <published>2016-07-31T04:00:00.000Z</published>
-    <updated>2016-08-01T01:28:36.234Z</updated>
+    <published>2016-07-30T16:00:00.000Z</published>
+    <updated>2016-08-01T01:28:36.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00-imgur-com-一个随便看图的网站&quot;&gt;&lt;a href=&quot;#0x00-imgur-com-一个随便看图的网站&quot; class=&quot;headerlink&quot; title=&quot;0x00 imgur.com: 一个随便看图的网站&quot;&gt;&lt;/a&gt;0x00 imgur.com: 一个随便看图的网站&lt;/h2&gt;&lt;p&gt;imgur 上的图都是大家上传的，首先 imgur 不允许用户上传 Copyright 有问题的图，因此下载这些图应该也是合法的。但是这些图的确不是很容易批量下载，正好正在学习 python，因此打算写一个 Python 的爬虫，来抓取感兴趣的图片来下载。写好的代码在：&lt;a href=&quot;https://github.com/wangdongustc/imgur_downloader&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;wangdongustc/imgur_downloader&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;当然如果是想要引用的话，直接下载或者使用 embedded code 也是可以的。如下～ （So adorable –）&lt;/p&gt;
@@ -196,11 +205,89 @@
   </entry>
   
   <entry>
+    <title>在 Chromebook 上装 Linux</title>
+    <link href="http://www.wangdongustc.com/blog/2016/07/31/install-linux-on-chrome-book/"/>
+    <id>http://www.wangdongustc.com/blog/2016/07/31/install-linux-on-chrome-book/</id>
+    <published>2016-07-30T16:00:00.000Z</published>
+    <updated>2016-10-09T10:47:12.848Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0x00-Chromebook-只能用-Google-Chrome的笔记本&quot;&gt;&lt;a href=&quot;#0x00-Chromebook-只能用-Google-Chrome的笔记本&quot; class=&quot;headerlink&quot; title=&quot;0x00 Chromebook: 只能用 Google Chrome的笔记本&quot;&gt;&lt;/a&gt;0x00 Chromebook: 只能用 Google Chrome的笔记本&lt;/h2&gt;&lt;p&gt;虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 &lt;a href=&quot;https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android on Chrome OS&lt;/a&gt; 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。&lt;/p&gt;
+&lt;p&gt;因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 &lt;a href=&quot;https://github.com/dnschneid/crouton&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Crouton&lt;/a&gt; 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。&lt;/p&gt;
+&lt;p&gt;本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;0x01-解锁开发者模式&quot;&gt;&lt;a href=&quot;#0x01-解锁开发者模式&quot; class=&quot;headerlink&quot; title=&quot;0x01 解锁开发者模式&quot;&gt;&lt;/a&gt;0x01 解锁开发者模式&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/acer-c720-chromebook&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chromium 网站&lt;/a&gt;上有如何将 Chromebook 切换到 developer mode:&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;To invoke Recovery mode, you hold down the &lt;em&gt;ESC&lt;/em&gt; and &lt;em&gt;Refresh (F3)&lt;/em&gt; keys and poke the Power button.&lt;/cite&gt;&lt;/p&gt;
+&lt;p&gt;To enter Dev-mode you first invoke Recovery, and at the Recovery screen press &lt;em&gt;Ctrl-D&lt;/em&gt; (there’s no prompt - you have to know to do it). It will ask you to confirm, then reboot into dev-mode.&lt;/p&gt;
+&lt;p&gt;就是按住 ESC 和 刷新键 (F2) 后按开关启动，就可以进入一个警告界面。等待30s或者按 Ctrl-D 即可继续开机。&lt;/p&gt;
+&lt;h2 id=&quot;0x02-修复盘制作&quot;&gt;&lt;a href=&quot;#0x02-修复盘制作&quot; class=&quot;headerlink&quot; title=&quot;0x02 修复盘制作&quot;&gt;&lt;/a&gt;0x02 修复盘制作&lt;/h2&gt;&lt;p&gt;参考 &lt;a href=&quot;https://support.google.com/chromebook/answer/1080595?hl=en&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome OS&lt;/a&gt; 官方的帮助文档，方法为：&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;On the working computer (not the Chromebook with the error), &lt;a href=&quot;https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;install the recovery app&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Open the app and follow the on-screen instructions to create the recovery media.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Open the Chromebook you want to recover.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;f you have anything connected to this Chromebook (such as a mouse, SD card, or external hard drive), remove it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Enter recovery mode:&lt;/p&gt;
+&lt;p&gt; If you have a Chromebook with a keyboard, press and hold Esc + Refresh Refresh, then press Power Power. Let go of Power, then let go of the other keys.&lt;br&gt; If you have a Chromebox or Chromebit, turn it off, press its recovery button, then press the Power button to turn it back on. To find the location of the recovery button, see the user manual.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You’ll see one of these messages:&lt;/p&gt;
+&lt;p&gt; “Chrome OS is missing or damaged. Please insert a recovery USB stick or SD card.”&lt;br&gt; “Please insert a recovery USB stick or SD card.”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Insert the recovery media you’ve created (SD card or USB drive).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Follow the on-screen instructions.&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其实就是下载那个App，然后创建一个SD卡就可以了用来恢复 ChromeOS了。&lt;/p&gt;
+&lt;h2 id=&quot;0x03-开启-SeaBIOS&quot;&gt;&lt;a href=&quot;#0x03-开启-SeaBIOS&quot; class=&quot;headerlink&quot; title=&quot;0x03 开启 SeaBIOS&quot;&gt;&lt;/a&gt;0x03 开启 SeaBIOS&lt;/h2&gt;&lt;p&gt;参考 Arch Linux 的安装指南，如何在 &lt;a href=&quot;https://wiki.archlinux.org/index.php/Chrome_OS_devices&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chromebook 上安装&lt;/a&gt;。内容十分详细。&lt;br&gt;在 Dell 7310 上，安装 SeaBIOS 的方法是&lt;a href=&quot;https://github.com/Kerryliu/Native-Linux-on-Dell-Chromebook-13/wiki/Enabling-Legacy-Boot&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考&lt;/a&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;脚本&lt;br&gt;这些代码的运行方法为，在 Chrome 界面按 Ctrl+Alt+t 调出 terminal, 打 shell 进入 bash 后操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; flash_chromebook_rom.sh; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -k -L -O https://johnlewis.ie/flash_chromebook_rom.sh; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo -E bash flash_chromebook_rom.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;命令&lt;br&gt;运行完脚本之后，以 root 身份输入：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;crossystem dev_boot_usb=1 dev_boot_legacy=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;来启用USB启动。&lt;/p&gt;
+&lt;p&gt;安装了之后，系统就可以在开机启动U盘了。开机启动时候，按 Ctrl+L 即可进入启动菜单选项。&lt;/p&gt;
+&lt;h2 id=&quot;0x04-USB-启动介质制作&quot;&gt;&lt;a href=&quot;#0x04-USB-启动介质制作&quot; class=&quot;headerlink&quot; title=&quot;0x04 USB 启动介质制作&quot;&gt;&lt;/a&gt;0x04 USB 启动介质制作&lt;/h2&gt;&lt;p&gt;测试发现 opensuse Tumbleweed 安装会有问题，Ubuntu Mate 和 普通 desktop 也没有成功。最后用 Fedora 24 十分完美的安装成功了。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先是 Fedora 下载，Workstation 版&lt;a href=&quot;https://getfedora.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;由此下载&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;U盘启动制作器，可用的有很多，比如 &lt;a href=&quot;http://www.majorgeeks.com/files/details/imageusb.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ImageUSB&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;按照步骤，在另一台电脑上制作启动U盘，记得校验是否成功。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;制作完毕后，这个U盘就可以用来给普通电脑安装 Fedora 了。&lt;/p&gt;
+&lt;h2 id=&quot;0x05-安装！&quot;&gt;&lt;a href=&quot;#0x05-安装！&quot; class=&quot;headerlink&quot; title=&quot;0x05 安装！&quot;&gt;&lt;/a&gt;0x05 安装！&lt;/h2&gt;&lt;p&gt;给 Chromebook 插上制作好的U盘，按开机启动。然后：&lt;/p&gt;
+&lt;p&gt;在30s之内按下 Ctrl-l， 进入 SeaBIOS。接着按提示按下 ESC，选择 USB blablabla…&lt;/p&gt;
+&lt;p&gt;之后就进入和在正常电脑上一样的安装过程，按提示进行即可。需要注意的是在选择磁盘的时候，可以把所有的分区都擦掉，把为数不多的16G全部留给 Fedora。我分配的是 500M boot + 1.5G swap + 13.5G ext4 /。使用过程中交换空间还是使用了一部分的，相比与我的11年 Lenovo 老大哥, 直观上还是略逊一筹的。&lt;/p&gt;
+&lt;h2 id=&quot;0x06-后记&quot;&gt;&lt;a href=&quot;#0x06-后记&quot; class=&quot;headerlink&quot; title=&quot;0x06 后记&quot;&gt;&lt;/a&gt;0x06 后记&lt;/h2&gt;&lt;p&gt;至此，Fedora Linux 已经安装在 Chromebook 上了。但是每次开机都必须在30s内按 Ctrl-l 然后 ESC 才会进入 Grub，否则会出现 “Chrome OS 损坏”之类的字样。Google 对 bootloader 的封装还是十分严密的。如果要直接启动 Fedora，就要拆机后拆除&lt;em&gt;写保护螺钉&lt;/em&gt;。总之安装 linux 有风险，但是安装好之后的感觉，比 Chrome OS 不知道高到哪里去了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/img/install-linux-on-chrome-book/Screenshot.png&quot; alt=&quot;桌面截图&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x00-Chromebook-只能用-Google-Chrome的笔记本&quot;&gt;&lt;a href=&quot;#0x00-Chromebook-只能用-Google-Chrome的笔记本&quot; class=&quot;headerlink&quot; title=&quot;0x00 Chromebook: 只能用 Google Chrome的笔记本&quot;&gt;&lt;/a&gt;0x00 Chromebook: 只能用 Google Chrome的笔记本&lt;/h2&gt;&lt;p&gt;虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 &lt;a href=&quot;https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps&quot;&gt;Android on Chrome OS&lt;/a&gt; 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。&lt;/p&gt;
+&lt;p&gt;因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 &lt;a href=&quot;https://github.com/dnschneid/crouton&quot;&gt;Crouton&lt;/a&gt; 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。&lt;/p&gt;
+&lt;p&gt;本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="chromebook" scheme="http://www.wangdongustc.com/blog/tags/chromebook/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://www.wangdongustc.com/blog/2015/01/01/hello-world/"/>
     <id>http://www.wangdongustc.com/blog/2015/01/01/hello-world/</id>
-    <published>2015-01-01T05:00:00.000Z</published>
-    <updated>2016-08-01T01:17:45.062Z</updated>
+    <published>2014-12-31T16:00:00.000Z</published>
+    <updated>2016-08-01T01:17:45.000Z</updated>
     
     <content type="html">&lt;p&gt;原来已经有了一个“Hello World”了。&lt;/p&gt;
 &lt;h2 id=&quot;在这里写一些-Markdown-使用过程中的小技巧&quot;&gt;&lt;a href=&quot;#在这里写一些-Markdown-使用过程中的小技巧&quot; class=&quot;headerlink&quot; title=&quot;在这里写一些 Markdown 使用过程中的小技巧&quot;&gt;&lt;/a&gt;在这里写一些 Markdown 使用过程中的小技巧&lt;/h2&gt;&lt;h3 id=&quot;插入图片&quot;&gt;&lt;a href=&quot;#插入图片&quot; class=&quot;headerlink&quot; title=&quot;插入图片&quot;&gt;&lt;/a&gt;插入图片&lt;/h3&gt;&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;![&lt;span class=&quot;string&quot;&gt;图片要是显示不了……&lt;/span&gt;](&lt;span class=&quot;link&quot;&gt;/blog/img/qq.png&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;

@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Chromebook 在 Fedora 24 下的温度控制 | 小叮当走失在1995</title>
+  <meta name="author" content="Darren Wang">
+  
+  <meta name="description" content="0x00 Linux on Chromebook: 存在小Bug之前给 Dell CHromebook 7310 装了 linux Fedora 24 之后，开 Chrome 看视频就会莫名其妙的卡住，然后只能强制关机重启 （长按电源按键）。有一次看 Youtube 视频开了全屏，卡死之后长按电源按键也不再有用，包括合盖也不会熄屏，因此置之不理。第二天去看时候已经完全无法开机，充上电后开机 CPU 发烫，但无法进入 BIOS。无奈叫了 Dell 的保修服务，后维修单显示更换了 主板，网卡之后才可以开机。
+根据一些网上的信息，貌似是在刷写 SeaBios时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。
+0x01 问题需求因此想到至少需要试着解决如下问题：
+
+电池耗尽 【想到可以保留一部分电量，在10%左右低电关机】
+过热    【不容易解决，因为风扇确实不转，但可以在温度达到较高水平时提示关机】">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Chromebook 在 Fedora 24 下的温度控制"/>
+  <meta property="og:site_name" content="小叮当走失在1995"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/blog/favicon.png" rel="icon">
+  <link rel="alternate" href="/blog/atom.xml" title="小叮当走失在1995" type="application/atom+xml">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/blog/">小叮当走失在1995</a></h1>
+  <h2><a href="/blog/">苟利国家生死以，岂因祸福避趋之</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/blog/">Home</a></li>
+    
+      <li><a href="/blog/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-09T09:31:16.000Z"><a href="/blog/2016/10/09/tempture-and-battery-control-on-chromebook/">2016-10-09</a></time>
+      
+      
+  
+    <h1 class="title">Chromebook 在 Fedora 24 下的温度控制</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="0x00-Linux-on-Chromebook-存在小Bug"><a href="#0x00-Linux-on-Chromebook-存在小Bug" class="headerlink" title="0x00 Linux on Chromebook: 存在小Bug"></a>0x00 Linux on Chromebook: 存在小Bug</h2><p>之前给 Dell CHromebook 7310 装了 linux Fedora 24 之后，开 Chrome 看视频就会莫名其妙的卡住，然后只能强制关机重启 （长按电源按键）。有一次看 Youtube 视频开了全屏，卡死之后长按电源按键也不再有用，包括合盖也不会熄屏，因此置之不理。第二天去看时候已经完全无法开机，充上电后开机 CPU 发烫，但无法进入 BIOS。无奈叫了 Dell 的保修服务，后维修单显示更换了 <strong>主板</strong>，<strong>网卡</strong>之后才可以开机。</p>
+<p>根据一些网上的信息，貌似是在刷写 <a href="https://johnlewis.ie/" target="_blank" rel="external">SeaBios</a>时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。</p>
+<h2 id="0x01-问题需求"><a href="#0x01-问题需求" class="headerlink" title="0x01 问题需求"></a>0x01 问题需求</h2><p>因此想到至少需要试着解决如下问题：</p>
+<ol>
+<li>电池耗尽 【想到可以保留一部分电量，在10%左右低电关机】</li>
+<li>过热    【不容易解决，因为风扇确实不转，但可以在温度达到较高水平时提示关机】</li>
+</ol>
+<a id="more"></a>
+<p>现有的电源管理会在电池电量较低时提示，但貌似不会采取措施；过热时候 CPU 会降频，但还是会产生较多热量。因此想通过一个程序实现如下功能：</p>
+<ol>
+<li>低电而未充电时，提示用户关机，两分钟内用户不关机也要强制关机；保护电脑不坏更重要。</li>
+<li>主板/CPU 温度过高时提示用户关闭部分高消耗的程序以减小功耗，温度增长过快时提示用户检查正在运行的程序，温度达到某设定值强制快速关机以冷却电脑；保护电脑不坏更重要。</li>
+<li>随机启动，随时醒目提示。</li>
+</ol>
+<h2 id="0x02-依赖小工具"><a href="#0x02-依赖小工具" class="headerlink" title="0x02 依赖小工具"></a>0x02 依赖小工具</h2><p>首先是获得电量/充电信息。可通过如下小软件 <strong>acpi</strong> 获得：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xxx@localhost ~]$ acpi</span><br><span class="line">Battery 0: Discharging, 44%, 04:45:14 remaining</span><br></pre></td></tr></table></figure>
+<p>其次是温度信息的获得，可读取传感器信息获得，软件 <strong>lm_sensors</strong> 提供此功能：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[xxx@localhost ~]$ sensors</span><br><span class="line">acpitz-virtual-0</span><br><span class="line">Adapter: Virtual device</span><br><span class="line">temp1:        +40.8°C  (crit = +104.0°C)</span><br><span class="line"></span><br><span class="line">pch_wildcat_point-virtual-0</span><br><span class="line">Adapter: Virtual device</span><br><span class="line">temp1:        -50.0°C </span><br><span class="line"></span><br><span class="line">coretemp-isa-0000</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">Physical id 0:  +47.0°C  (high = +105.0°C, crit = +105.0°C)</span><br><span class="line">Core 0:         +46.0°C  (high = +105.0°C, crit = +105.0°C)</span><br><span class="line">Core 1:         +46.0°C  (high = +105.0°C, crit = +105.0°C)</span><br></pre></td></tr></table></figure>
+<p>其实 sensors 的输出应该包含风扇信息，而且一般通过 fancontrol 可以控制风扇行为，可通过 pwmconfig 来设置。但是在此电脑上没有显示出风扇的信息，而且 fancontrol 和 pwmconfig 相继报错，也就没办法去直接用小软件控制风扇了。</p>
+<p>在 Fedora 24 上安装这些软件通过如下进行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[xxx@localhost ~]$ sudo dnf install acpi lm_sensors fancontrol pwmconfig</span><br></pre></td></tr></table></figure>
+<h2 id="0x03-程序写法"><a href="#0x03-程序写法" class="headerlink" title="0x03 程序写法"></a>0x03 程序写法</h2><p>思路是直接读取 acpi 和 sensors 程序的输出结果，从中找到电池和温度信息。然后每隔一段时间读一次，实时监控电量和温度变化。</p>
+<p>执行程序并读取输出结果由 popen() 函数完成：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">GetCommandOutput</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* command)</span> </span>&#123;</span><br><span class="line">	FILE * fstream = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">char</span> buff[<span class="number">80</span>];</span><br><span class="line">	<span class="built_in">string</span> output;</span><br><span class="line">	fstream = popen(command, <span class="string">"r"</span>);</span><br><span class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == fstream) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"Command Execution Error!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">NULL</span> != fgets(buff, <span class="number">400</span>, fstream)) &#123;</span><br><span class="line">		output = output.append(buff);</span><br><span class="line">	&#125;</span><br><span class="line">	pclose(fstream);</span><br><span class="line">	<span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后字符串分析是直接通过 string 的 find() 等函数进行的：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BatteryStatus* <span class="title">GetBatteryLevel</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	BatteryStatus *results = <span class="keyword">new</span> BatteryStatus();</span><br><span class="line">	<span class="built_in">string</span> acpi_output = GetCommandOutput(<span class="string">"acpi"</span>);</span><br><span class="line">	<span class="keyword">int</span> index = acpi_output.find_last_of(<span class="string">'%'</span>);</span><br><span class="line">	results-&gt;percentage = atoi(acpi_output.substr(index<span class="number">-2</span>, index).c_str());</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">string</span>::npos == acpi_output.find(<span class="string">"Discharging"</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">		results-&gt;charging = <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; results.percentage &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里通过检测百分比符号来得到电量信息，通过 “Discharging” 串来判断当前是否在充电。BatteryStatus 是一个类，包含是否在充电，电量百分比成员。<br>判断设备温度时，因为设备个数不一定，因此使用链表来储存设备和其温度信息。其结构为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> DeviceTemperature &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">string</span> device;</span><br><span class="line">	<span class="keyword">float</span> temperature;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	DeviceTemperature* next_device;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>信息提取也是通过字符串分析得到的。</p>
+<p>系统的通知是使用 libnotifymm 库来实现的，效果和方法如下：</p>
+<p><img src="/blog/img/tempture-and-battery-control-on-chromebook/notify.png" alt="通知"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;libnotifymm.h&gt;</span><br><span class="line">#include &lt;libnotifymm/init.h&gt;</span><br><span class="line">#include &lt;libnotifymm/notify.h&gt;</span><br><span class="line">#include &lt;libnotifymm/notification.h&gt;</span><br><span class="line"></span><br><span class="line">// init the notifications.</span><br><span class="line">Notify::init(&quot;Aggressive Power Management&quot;);</span><br><span class="line">string title   = &quot;Aggressive Power Management&quot;;</span><br><span class="line">string message = &quot;电源和过热控制已启动&quot;;</span><br><span class="line">Notify::Notification notification(title, message);</span><br><span class="line">// urgency level: low/normal/critical</span><br><span class="line">notification.set_urgency(Notify::URGENCY_NORMAL);</span><br><span class="line">notification.show();</span><br><span class="line">// update current notification with new title and message</span><br><span class="line">notification.update(title, message);</span><br><span class="line">notification.close();</span><br></pre></td></tr></table></figure>
+<p>main函数里面的逻辑就是在一个 while(1) 循环里面不断检查电量和温度，然后在适合的时间关机 （system(“init 0”);）。</p>
+<p>完整的程序在 <a href="https://coding.net/" target="_blank" rel="external">coding.net</a> 上，项目地址为 <a href="https://coding.net/u/wangdong115/p/MakingWheel/git" target="_blank" rel="external">https://coding.net/u/wangdong115/p/MakingWheel/git</a>，在 tmpctrl 文件夹下。</p>
+<p>另：在 eclipse 中做这个时候，编译链接时需要在设置里添加库的路径，然后通过 </p>
+<p>C/C++ Build-&gt;Setting-&gt;Gcc c Compiler-&gt;Miscellaneous中添加$$(pkg-config –cflags glibmm-2.4 –cflags libnotifymm-1.0)<br>C/C++ Build-&gt;Setting-&gt;Gcc c Linker-&gt;Miscellaneous中添加$$(pkg-config –libs glibmm-2.4 –libs libnotifymm-1.0)</p>
+<p>来让 g++ 在编译和链接的时候不懵逼。</p>
+<h2 id="0x04-效果检验"><a href="#0x04-效果检验" class="headerlink" title="0x04 效果检验"></a>0x04 效果检验</h2><p>最终的效果就是在系统出现 电量低的时候进行倒计时关机，温度升高过快时提示，达到80度通知关闭部分程序，到了85度就直接半秒内关机。用 dex-autostart 将程序包装成 .desktop 程序，然后放入 ~/.config/autostart 文件夹，开机 login 进入 Gnome 后便可自动执行程序。</p>
+<p>程序对温度的敏感度，警告和关机温度以及电量都可以在程序中定义。</p>
+<h2 id="0x05-总结"><a href="#0x05-总结" class="headerlink" title="0x05 总结"></a>0x05 总结</h2><p>总而言之虽然程序完成了指定的功能，而且可以防止电量过低或者温度过高而导致不可修复的损坏，但整体的逻辑有一些问题。比如说程序主动关机可能损坏用户的当前工作(? 很好奇为什么 reboot, init 0 这样的程序都不需要 root 权限就可以执行)。</p>
+<p>另外程序的性能也有问题，比如在一个循环内申请/释放内存（通过 new 和 delete 来创建和释放类），本来程序写成直接返回类，但那样看起来很危险；还有多处返回 string 类。很怕程序会内存泄露，毕竟会一直在后台运行，却不会做泄漏检查。想当程序员，还有很长的路要走啊。。 </p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/blog/tags/chromebook/">chromebook</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Kommentare</h1>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="" data-title="Chromebook 在 Fedora 24 下的温度控制" data-url=""></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangdong115"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:www.wangdongustc.com/blog">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/blog/tags/chromebook/">chromebook</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <table align="center" id="claimtable">
+		<tr>
+			<td>特别鸣谢：我的家人，朋友，老师，以及</td>
+			<td><div class="item" > &nbsp;我的女朋友文文妹<div class="tooltip" style="z-index:3"><img src="/img/gf.png" width="280px"><div class="arrow"></div></div>
+			<div class="dropface"><img src="/img/qq.png" style="margin-left:47px"></div>	
+			
+			</div>
+			</td>
+			<td>感谢他们一直以来的支持与陪伴~</td>
+		</tr>
+  </table>
+  </br>
+  
+  &copy; 2016 &nbsp;Darren Wang.&nbsp;
+  Bring to You by <a href="https://hexo.io/" target="_blank">Hexo</a> on <a href="https://github.com/" target="_blank">Github</a>. &nbsp;
+  Your IP:<script language="JavaScript" type="text/javascript" src=http://home.ustc.edu.cn/cgi-bin/myip> </script>.&nbsp;
+  
+  Access Count:
+  <!-- Start of StatCounter Code for Default Guide -->
+		<script type="text/javascript">
+		var sc_project=10001089; 
+		var sc_invisible=0; 
+		var sc_security="c0df197e"; 
+		var sc_text=2; 
+		var scJsHost = (("https:" == document.location.protocol) ?
+		"https://secure." : "http://www.");
+		document.write("<sc"+"ript type='text/javascript' src='" +
+		scJsHost+
+		"statcounter.com/counter/counter.js'></"+"script>");
+		</script>
+		<noscript>
+		<div class="statcounter"><a title="shopify site
+		analytics" href="http://statcounter.com/shopify/"
+		target="_blank"><img class="statcounter"
+		src="http://c.statcounter.com/10001089/0/c0df197e/0/"
+		alt="shopify site analytics"></a></div>
+		</noscript>
+<!-- End of StatCounter Code for Default Guide -->.
+
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

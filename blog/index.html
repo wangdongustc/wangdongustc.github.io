@@ -50,26 +50,30 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-08-01T00:03:57.379Z"><a href="/blog/2016/07/31/install-linux-on-chrome-book/">2016-07-31</a></time>
+        <time datetime="2016-10-09T09:31:16.000Z"><a href="/blog/2016/10/09/tempture-and-battery-control-on-chromebook/">2016-10-09</a></time>
       
       
   
-    <h1 class="title"><a href="/blog/2016/07/31/install-linux-on-chrome-book/">在 Chromebook 上装 Linux</a></h1>
+    <h1 class="title"><a href="/blog/2016/10/09/tempture-and-battery-control-on-chromebook/">Chromebook 在 Fedora 24 下的温度控制</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="0x00-Chromebook-只能用-Google-Chrome的笔记本"><a href="#0x00-Chromebook-只能用-Google-Chrome的笔记本" class="headerlink" title="0x00 Chromebook: 只能用 Google Chrome的笔记本"></a>0x00 Chromebook: 只能用 Google Chrome的笔记本</h2><p>虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 <a href="https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps">Android on Chrome OS</a> 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。</p>
-<p>因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 <a href="https://github.com/dnschneid/crouton">Crouton</a> 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。</p>
-<p>本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。<br>
+        <h2 id="0x00-Linux-on-Chromebook-存在小Bug"><a href="#0x00-Linux-on-Chromebook-存在小Bug" class="headerlink" title="0x00 Linux on Chromebook: 存在小Bug"></a>0x00 Linux on Chromebook: 存在小Bug</h2><p>之前给 Dell CHromebook 7310 装了 linux Fedora 24 之后，开 Chrome 看视频就会莫名其妙的卡住，然后只能强制关机重启 （长按电源按键）。有一次看 Youtube 视频开了全屏，卡死之后长按电源按键也不再有用，包括合盖也不会熄屏，因此置之不理。第二天去看时候已经完全无法开机，充上电后开机 CPU 发烫，但无法进入 BIOS。无奈叫了 Dell 的保修服务，后维修单显示更换了 <strong>主板</strong>，<strong>网卡</strong>之后才可以开机。</p>
+<p>根据一些网上的信息，貌似是在刷写 <a href="https://johnlewis.ie/">SeaBios</a>时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。</p>
+<h2 id="0x01-问题需求"><a href="#0x01-问题需求" class="headerlink" title="0x01 问题需求"></a>0x01 问题需求</h2><p>因此想到至少需要试着解决如下问题：</p>
+<ol>
+<li>电池耗尽 【想到可以保留一部分电量，在10%左右低电关机】</li>
+<li>过热    【不容易解决，因为风扇确实不转，但可以在温度达到较高水平时提示关机】</li>
+</ol>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/blog/2016/07/31/install-linux-on-chrome-book/#more" class="more-link">Read More</a>
+            <a href="/blog/2016/10/09/tempture-and-battery-control-on-chromebook/#more" class="more-link">Read More</a>
           </div>
         
         
@@ -88,7 +92,39 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-07-31T04:00:00.000Z"><a href="/blog/2016/07/31/Python-with-Visual-Studio-Code/">2016-07-31</a></time>
+        <time datetime="2016-08-31T14:30:07.000Z"><a href="/blog/2016/08/31/screen-tips-program/">2016-08-31</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2016/08/31/screen-tips-program/">screen tips program</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="0x00-家里的慢电脑"><a href="#0x00-家里的慢电脑" class="headerlink" title="0x00 家里的慢电脑"></a>0x00 家里的慢电脑</h2><h2 id="0x01-解决方法：屏幕提示"><a href="#0x01-解决方法：屏幕提示" class="headerlink" title="0x01 解决方法：屏幕提示"></a>0x01 解决方法：屏幕提示</h2><h2 id="0x02-技术实现"><a href="#0x02-技术实现" class="headerlink" title="0x02 技术实现"></a>0x02 技术实现</h2>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-07-30T16:00:00.000Z"><a href="/blog/2016/07/31/Python-with-Visual-Studio-Code/">2016-07-31</a></time>
       
       
   
@@ -125,7 +161,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-07-31T04:00:00.000Z"><a href="/blog/2016/07/31/imgur-python-spider/">2016-07-31</a></time>
+        <time datetime="2016-07-30T16:00:00.000Z"><a href="/blog/2016/07/31/imgur-python-spider/">2016-07-31</a></time>
       
       
   
@@ -163,7 +199,45 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-01-01T05:00:00.000Z"><a href="/blog/2015/01/01/hello-world/">2015-01-01</a></time>
+        <time datetime="2016-07-30T16:00:00.000Z"><a href="/blog/2016/07/31/install-linux-on-chrome-book/">2016-07-31</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2016/07/31/install-linux-on-chrome-book/">在 Chromebook 上装 Linux</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="0x00-Chromebook-只能用-Google-Chrome的笔记本"><a href="#0x00-Chromebook-只能用-Google-Chrome的笔记本" class="headerlink" title="0x00 Chromebook: 只能用 Google Chrome的笔记本"></a>0x00 Chromebook: 只能用 Google Chrome的笔记本</h2><p>虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 <a href="https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps">Android on Chrome OS</a> 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。</p>
+<p>因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 <a href="https://github.com/dnschneid/crouton">Crouton</a> 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。</p>
+<p>本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。<br>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/blog/2016/07/31/install-linux-on-chrome-book/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-12-31T16:00:00.000Z"><a href="/blog/2015/01/01/hello-world/">2015-01-01</a></time>
       
       
   
@@ -209,7 +283,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:www.wangdongustc.com/blog">
   </form>
 </div>
@@ -217,6 +291,15 @@
   
 
   
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/blog/tags/chromebook/">chromebook</a><small>2</small></li>
+  
+  </ul>
+</div>
+
 </aside>
     <div class="clearfix"></div>
   </div>
