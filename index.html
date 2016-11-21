@@ -1,189 +1,545 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-cn">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="王栋的主页 | Darren Wang's Homepage" />
-<title>Darren Wang's Homepage | 王栋的主页</title>
-<!--[if IE]>
-<link href="css/styleIE.css" rel="stylesheet" type="text/css" media="screen" />
-<![endif]-->
-<!--导入css样式-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="css/nav_fix.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="css/egg.css" rel="stylesheet" type="text/css" media="screen" />
-<!--
-<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="js/scroll.js"></script>
--->
-
+    <title>Darren Wang's Homepage | About me | CV | Interesting things I have done </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=divice-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-new.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
-<body>
-<section id="start"></section>
-<header>
-	<nav class="nav-collapse">
-		<ul> 
-			<li><a href="#start" id="avatar"><img  src="http://tp4.sinaimg.cn/2607064211/180/5720609458/1" alt="img/avatar.png"height="30px"></a></li>
-			<li><a href="http://weibo.com/wangdongisme" id="wblink" target="_blank">王汪汪_UsTc 新浪微博</a></li>
-			<li class="active"><a href="#start">主页 Homepage</a></li>
-			<li><a href="blog/index.html" target="_blank">博客 Blog</a></li>
-			<li><a href="https://www.instagram.com/wangdongustcer" target="_blank">我的 Instagram</a></li>
-          	<li><a href="http://home.ustc.edu.cn/~bighead/index_en-us.html" target="_blank">旧版主页(USTC)</a></li>
-        </ul>
-	</nav>
-	<hr width="100%" style="padding:0;margin:0">
-</header>
-<section>
-
-
 <script>
-window.onload = function(){
-	document.getElementById("blank1").style.height=document.getElementById("backpic1").height-400+"px";
-}
-
-window.onresize = function(){
-	document.getElementById("blank1").style.height=document.getElementById("backpic1").height-400+"px";
-}
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
 
-<img id="backpic1" class = "picture" src="img/QingDao.jpg"  />
+<body style="background-color:#FEFEFE">
+    <!-- title and greetings on the top -->
+    <div class="page-header img-banner">
+        <div class="container text-left light-font head-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><br><br>Darren Wang's Homepage</h1>
+                    <hr>
+                    <h4>keep it simple, and try to make a difference<br></h4>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="aboutme">
+        <h2 class="text-center"><br> Facts about Me</h2>
+        <h4 class="text-center"> I am Darren Wang (official name: Dong Wang), I ...</h4>
+        <hr>
+        <br>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/user.png" alt="Born">
+                        <h4>... was born<br>in China in 1995</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/mortarboard.png" alt="Education">
+                        <h4>... graduated from<br>
+                            <a href="http://en.ustc.edu.cn" target="_blank" data-toggle="tooltip" title="" data-original-title="University of Science and Technology of China">
+                        USTC</a> in 2015</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/satellite.png" alt="Major">
+                        <h4>... majored in<br>
+                            <a href="http://pmpi.ustc.edu.cn" target="_blank" data-toggle="tooltip" title="" data-original-title="Department of Precision Machinery and Instrumentation">
+                        mechanical engineering</a></h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/macbook.png" alt="Like">
+                        <h4>... like<br>computers and electronics</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/ufo.png" alt="Born">
+                        <h4>... know about<br>control system theories</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/smartphone.png" alt="Program">
+                        <h4>... can program on<br> embedded systems</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/monitor.png" alt="Major">
+                        <h4>... have interest in <br> divice divelopment</a>
+                        </h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="point-img" src="img/facts/mind.png" alt="Coding">
+                        <h4>... want to be<br>a computer and electronic engineer</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
 
-<div class="transbox" id="welcome">
-	<div class="bodybox">
-	<h1><br />所以后来我就念了两首(句)诗，叫“苟利国家生死以，岂因祸福避趋之”。</h1>
-	<h3> ——长者<h3>
-	</div>
-</div>
+    <div class="container-fluid img-h1">
+        <h2 class="light-font text-center"><br><br><br> Project Experience</h2>
+        <h4 class="light-font text-center"><br>Here are some interesting projects that I participated in </h4>
+        <h2><br><br></h2>
+    </div>
+    <br>
 
-<div class="transbox" id="blank1" style="height:100px"></div>
+    <div class="container text-center">
+        <h2 class="text-center"><br>Biomedical divice divelopment Projects</h2>
+        <h4 class="text-center"> ... with the research group at Laboratory for Multimodal Biomedical Imaging and Therapy at USTC</h4>
+        <hr>
+        <div class="row text-center">
+            <div class="col-sm-6">
+                <div class="thumbnail skills">
+                    <img src="img/index/google_glass.jpg" alt="Google Glass">
+                    <h4><strong>Goggle Navigation System for Cancer Resection Operation Using Google Glass</strong></h4>
+                    <p>The System used Google Glass® as a media to show the real-time fluorescence image or ultrasound image,
+                        which could provide doctors real-time guidance while preventing distraction that traditional screen
+                        based devices could usually cause.</p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="thumbnail skills">
+                    <img src="img/index/projector.jpg" alt="Projector">
+                    <h4><strong>Fluorescence Image Projective Navigation System for Clinical Operations</strong></h4>
+                    <p>The projective system could identify the fluorescent dyed tissues and present them by projecting pseudo
+                        color onto the surface of the tissues. The system could be used for cancer resection surgeries and
+                        sentinel nodes biopsies</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid text-center bg-grey">
+        <div class="container">
+            <h2 class="text-center"><br>Robotics-Related Projects</h2>
+            <h4 class="text-center"> application of robotic technology on multiple projects</h4>
+            <hr>
+            <div class="row text-center">
+                <div class="col-sm-3">
+                    <div class="thumbnail skills">
+                        <img src="img/index/uuv.jpg" alt="Google Glass">
+                        <h4><strong>Unmanned Underwater Vehicle</strong></h4>
+                        <p>funded by US Navy</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail skills">
+                        <img src="img/index/robothelmet.jpg" alt="Projector">
+                        <h4><strong>Robotic Halmet for Alzheimer's</strong></h4>
+                        <p>designed for aged people</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail skills">
+                        <img src="img/index/robot.jpg" alt="Google Glass">
+                        <h4><strong>Self-guided Outdoor Robot Vehicle</strong></h4>
+                        <p>designed for certain tasks</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail skills">
+                        <img src="img/index/balancing.jpg" alt="Projector">
+                        <h4><strong>Self-balancing Dual-wheel Robot</strong></h4>
+                        <p>powered by Kalman filter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
 
-<div class="transbox" id="about">
-	<div class="bodybox">
-	<h1>我是？ about me</h1>
-	<h2>名曰 “王栋”，本科毕业于中国科大（2011-2015），现就读于俄亥俄州立大学(2015-)。</br></br> Darren Wang: BS at USTC (2011-2015), Ph.D. student at OSU (2015-).</h2> 
-	</div>
-</div>
-<div class="transbox" id="detail" style="height:600px">
-	<div class="bodybox">
-	<br />
-	<table id="abouttable">
-	<tr>
-	<td>
-	<p>叫什么？叫王汪汪好啦 ^_>^</br>So you can call me "Wang Wang Wang~"</p>
-	<p>昵称呢？都说了叫王汪汪 = =</br>So... Will you bite like a dog?</p>
-	<p>多大啦？95年的。</br>Birthday? Secret.. But I am aquarius~</p>
-	<p>单身么？点这里来看我们的纪念日&nbsp;->&nbsp; <a href="dongandyuewen/index.html" target="_blank"><img  src="img/love.png" alt=""><img  src="img/love.png" alt=""></a> 和 <a href="blog/900-Days/index.html" target="_blank"><img  src="img/love.png" alt=""><img  src="img/love.png" alt=""></a> </br>I have a beautiful girlfriend. Learn more <a href="dongandyuewen/index.html">here</a> and <a href="blog/900-Days/index.html">here</a> </p>
-	<p>爱好呢？上上网，编编程，洗洗澡，睡睡觉</br>Then your hobby? Programming and Sleeping. .zZZ</p>
-	<p>卖个萌？不要 (￣ε(#￣)☆╰╮o(￣皿￣///)</br>Can you pretend to be adorable? Actually I am adorable.</p>
-	
-	<p><script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=0&sid=1770127756&mode=js"></script>
-	<p>
-	</td>
-	<td width="35x"><br /></td>
-	<td><img src="img/me.jpg" height="450px"/></td>
-	</tr>
-	</table>
-	
-	
-	</div>
-</div>
+    <div class="container-fluid img-h2">
+        <h2 class="text-center"><br><br><br> <strong>Ideas</strong></h2>
+        <h4 class="text-center"><br>Something I have thought of and wanted to build in the future</h4>
+        <h2><br><br></h2>
+    </div>
+    <br>
+    <div class="container">
+        <h3 class="text-center"><br>Bone Conduction Based <strong>Sticker Earphones</strong> </h3>
+        <h4 class="text-center">A pair of earphones that you can hardly notice but easily get impressed</h4>
+        <hr>
+        <div class="panel panel-default" style="background-color:#DCEDC8">
+            <div class="panel-heading text-center" style="background-color:#DCEDC8">
+                <h4>Earphones: Sometimes needs cannot be fulfilled...</h4>
+            </div>
+            <div class="panel-body skills" style="background-color:#FFFFFF">
+                <div class="row text-center">
+                    <div class="col-sm-4">
+                        <div class="thumbnail skills">
+                            <img src="img/ideas/apple_iphone_5_headset.jpg" alt="Iphone 5 Earpods">
+                            <h4><strong>Traditional Wired Headset</strong></h4>
+                            <p>Annoying wires + Sport unfriendly + Inability to hear extern sound very clearly (sometimes this
+                                could be an advantage).</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail skills">
+                            <img src="img/ideas/apple.jpg" alt="Iphone 7 Earpods">
+                            <h4><strong>Apple Wireless Earpods's</strong></h4>
+                            <p>No wires: kind of more convenient than traditional headset. But it can be lost easily, and it's
+                                also sport unfriendly.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail skills">
+                            <img src="img/ideas/bone_conduction_earphone.jpg" alt="Bone Conduction Earphone">
+                            <h4><strong>Bone Conduction Earphone</strong></h4>
+                            <p>No wires and ...<br> But what is the difference between this earphone and ordinary bluetooth
+                                earphones?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--panel-->
+        <div class="panel panel-default" style="background-color:#BBDEFB">
+            <div class="panel-heading text-center" style="background-color:#BBDEFB">
+                <h4>A sticker earphone can easily solve those problems ~</h4>
+            </div>
+            <div class="panel-body skills" style="background-color:#FFFFFF">
+                <div class="row text-center">
+                    <div class="col-sm-4">
+                        <div class="thumbnail skills text-center">
+                            <img src="img/ideas/sticker.jpg" alt="Sticker Earpods">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h4>An Imagination of <strong>Sticker Earphones </strong></h4>
+                        <h5><strong>Wearable Technology:</strong> a sticker can be easily placed on the back of ears stably.
+                        </h5>
+                        <h5><strong>Embedded Systems:</strong> a integration of bluetooth, battery, and bone conduction earphone.
+                        </h5>
+                        <h4 class="text-center">Problems to tackle</h4>
+                        <h5><strong>Adhensive Material:</strong> Reliable enough for sports with sweat; reusable ... </h5>
+                        <h5><strong>System Integration:</strong> Very small room for those components; Battery life ... </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--panel-->
+        <br>
+    </div>
+    <div class="bg-grey-dark">
+        <br>
+        <h3 class="text-center"><br><strong>3D Biomedical Imaging Device</strong> </h3>
+        <h4 class="text-center">A combination of VR/AR technology with biomedical devices</h4>
+        <div class="container">
+            <hr>
+            <div class="panel panel-default" style="background-color:#DCEDC8">
+                <div class="panel-heading text-center" style="background-color:#DCEDC8">
+                    <h4>Traditional Devices and Technology Trends</h4>
+                </div>
+                <div class="panel-body skills" style="background-color:#FFFFFF">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <div class="thumbnail text-center">
+                                <img src="img/ideas/scanner.jpg" alt="Scanner">
+                            </div>
+                            <h4>Traditional Medical Imaging Device:</h4>
+                            <h5>2D, Screen-based</h5>
+                        </div>
+                        <div class="col-sm-1">
+                            <h1><br>+</h1>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail text-center">
+                                <img src="img/ideas/3D-Camera.jpg" alt="3D-Camera">
+                            </div>
+                            <h4>3D Camera:</h4>
+                            <h5>3D reconstruction, visible light only</h5>
+                        </div>
+                        <div class="col-sm-1">
+                            <h1><br>=</h1>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="thumbnail text-center">
+                                <img src="img/ideas/dual-camera-scanner.jpg" alt="3D-Camera-Scanner">
+                            </div>
+                            <h4>3D Imaging Device:</h4>
+                            <h5>3D, VR/AR based presentation</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                <br>
+                    <h4>3D Imaging Device Features</h4>
+                    <h5>- Precise location information of the target tissue for doctors.</h5>
+                    <h5>- Liquid crystal switch between dual NIR cameras and dual VIS cameras, so that the 3D reconstruction can be conducted
+                        both for NIR information and VIS information.
+                    </h5>
+                    <h5>- Real-time information visible to operation doctors through AR devices, and visible to remote doctors through VR devices.</h5>
+                    <br>
+                </div>
+            </div>
+            <!--panel-->
+        </div>
+        <br>
 
-<div class="transbox" id="contact">
-	<div class="bodybox">
-	<h1>联系我 Contact Me </h1>
-	<h2>
-	<table id="abouttable">
-	<tr>
-	<td>
-	微信请扫描下面的二维码：<br />Wechat QR Code:<br /><br />
-	<img src="img/wechat.png" alt="图片加载失败，缘分不到啊！" height="280px">
-	</td>
-	<td width="100px"><br /></td>
-	<td>
-	QQ请扫描下面的二维码：<br />QQ QR Code:<br /><br />
-	<img src="img/qq.jpg" alt="图片加载失败，缘分不到啊！" height="280px">
-	</td>
-	</tr>
-	</table>
-	</h2>
-	
-	<h2>Email: wangdong115 at foxmail dot com</h2>
-	</div>
-</div>
-<div class="transbox" style="height:5px;background-color:#5677fc"></div>
-</section>
+
+    </div>
+
+    <div class="container-fluid img-h3">
+        <h2 class="text-center"><br><br><br><br> <strong>Services</strong></h2>
+        <h4 class="text-center"><br>... as the leader of technology group at the student robot club in USTC</h4>
+        <div class="container"><br><br><br><br><br></div>
+    </div>
+    <div class="container">
+        <br><br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a href="http://news.ustc.edu.cn/xwbl/201209/t20120915_139511.html" target="_blank">
+                            <img src="img/activities/robogame.jpg" class="img-thumbnail img-responsive myphoto" style="width:300px"></a>
+                        <div class="caption">
+                            <p><strong>2012 Robogame in USTC</strong>
+                                <br>as one of the competitors
+                                <br><a href="http://news.ustc.edu.cn/xwbl/201209/t20120915_139511.html" target="_blank">News report</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a href="http://topics.gmw.cn/2013-08/23/content_8687393.htm" target="_blank">
+                            <img src="img/activities/taicang.jpg" class="img-thumbnail img-responsive myphoto" style="width:300px"></a>
+                        <div class="caption">
+                            <p><strong>Taicang Robot Competition</strong>
+                                <br>on behalf of the robot club
+                                <br><a href="http://topics.gmw.cn/2013-08/23/content_8687393.htm" target="_blank">News report</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a href="http://news.ustc.edu.cn/xwbl/201409/t20140928_202132.html" target="_blank">
+                            <img src="img/activities/club.jpg" class="img-thumbnail img-responsive myphoto" style="width:300px"></a>
+                        <div class="caption">
+                            <p><strong>2013/2014 Robogame in USTC</strong>
+                                <br>as one of the organizers
+                                <br><a href="http://news.ustc.edu.cn/xwbl/201409/t20140928_202132.html" target="_blank">News report</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a>
+                            <img src="img/activities/summercamp.jpg" class="img-thumbnail img-responsive myphoto" style="width:300px"></a>
+                        <div class="caption">
+                            <p><strong> Camp for High Schools</strong>
+                                <br>as one of the tutors
+                                <br><a>News Unavailable</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </div>
+
+    <div class="alert alert-info">
+        <h2 class="text-center"><br> Hobbies</h2>
+        <h4 class="text-center"> Music (especially <a href="https://en.wikipedia.org/wiki/Jay_Chou" target="_blank">Jay Chou's</a>), and photography...
+            <span class="label label-default"><span class="glyphicon glyphicon-tags"></span>
+            <a href="https://www.instagram.com/wangdongustcer/" style="color:#fff"> Follow me on my instagram</span></a>
+        </h4>
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/BIk8VXwjM_P/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst1.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/BH3ZQ6xjUZI/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst2.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/BH3ZBvBjn07/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst3.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/BGciflIm03C/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst4.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/8RjmJWG03I/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst5.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/BGSiKX6m0zV/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst6.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/BFAeXILm0zI/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst7.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Left-aligned -->
+                        <center>
+                            <a href="https://www.instagram.com/p/86gmy8m0xk/?taken-by=wangdongustcer" target="_blank">
+                                <img src="img/hobby/inst8.jpg" class="img-rounded img-responsive myphoto"></a>
+                        </center>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- row -->
+    </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <h2 class="text-center"><br> Contact Info</h2>
+        <h4 class="text-center"> Write me an E-mail or give me a ring ...</h4>
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3><span class="glyphicon glyphicon-phone"></span> Mobile Phone</h3>
+                    <h4>(+86) 182-0182-5318 <span class="label label-info glyphicon glyphicon-tag"> Shanghai, China</span></h4><br>
+                    <h3><span class="glyphicon glyphicon-envelope"></span> E-mail</h3>
+                    <h4>wangdong115(at)foxmail.com (preferred) or <br>281215820(at)qq.com <span class="label label-info glyphicon glyphicon-tag"> Please replace (at) with @</span></h4><br>
+                    <h3><span class="glyphicon glyphicon-home"></span> Address</h3>
+                    <h4>Room No.417 Technology Building, West Campus USTC, Hefei, Anhui, 230026, PRC <span class="label label-info glyphicon glyphicon-tag"> Valid until May 2017</span></h4><br>
+                </div>
+                <div class="col-md-4">
+                    <center>
+                        <img src="img/contact/wechat.jpg" class="img-rounded img-responsive myphoto">
+                    </center>
+                </div>
+            </div>
+            <!-- row -->
+        </div>
+        <br><br>
+    </div>
 
 
 
-<div id= "claim">
-	<div class="bodybox">
-	<!--<hr id="line"/> -->
-	<p>相关网站 Related Sites：</p>
-	<table align="center" id="claimtable" width="85%">
-		<tr>
-			<td><a id="sitemap" href="https://www.facebook.com/wangdongisme">->&nbsp;Facebook: Darren Wang</a> </td>
-			<td><a id="sitemap" href="dongandyuewen/index.html">->&nbsp;我和小杠铃在一起两年啦</a></td>
-			<td><a id="sitemap" href="https://wangdong.blog.ustc.edu.cn">->&nbsp;科大博客</a></td>
-		</tr>
-		<tr>
-			<td><a id="sitemap" href="https://github.com/wangdongustc">->&nbsp;Github: wangdongustc</a></td>
-			<td><a id="sitemap" href="blog/index.html">->&nbsp;Hexo博客</a></td>
-			<td><a id="sitemap" href="https://www.zhihu.com/people/wang-dong-19-95">->&nbsp;知乎: 王栋</a></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td> </td>
-			<td> </td>
-		</tr>
-	</table>
-	</br>
-	</br>
-	</br>
-		<hr id="line"/>
-		<table align="center" id="claimtable">
-		<tr>
-			<td>特别鸣谢：我的家人，朋友，老师，以及 </td>
-			<td><div class="item" > 我的女朋友孙悦文<div class="tooltip" style="z-index:3"><img src="img/gf.jpg" width="280px"><div class="arrow"></div></div>
-			<div class="dropface"><img src="img/qq.png" style="margin-left:47px"></div>	
-			
-			</div>
-			</td>
-			<td>，感谢他们一直以来的支持与陪伴。</td>
-		</tr>
-		</table>
-		<p id="copyright" >(C)2014-2015 WANG Dong All Rights Reserved. Access Count:
-		
-<!-- Start of StatCounter Code for Default Guide -->
-		<script type="text/javascript">
-		var sc_project=10001089; 
-		var sc_invisible=0; 
-		var sc_security="c0df197e"; 
-		var sc_text=2; 
-		var scJsHost = (("https:" == document.location.protocol) ?
-		"https://secure." : "http://www.");
-		document.write("<sc"+"ript type='text/javascript' src='" +
-		scJsHost+
-		"statcounter.com/counter/counter.js'></"+"script>");
-		</script>
-		<noscript>
-		<div class="statcounter"><a title="shopify site
-		analytics" href="http://statcounter.com/shopify/"
-		target="_blank"><img class="statcounter"
-		src="http://c.statcounter.com/10001089/0/c0df197e/0/"
-		alt="shopify site analytics"></a></div>
-		</noscript>
-<!-- End of StatCounter Code for Default Guide -->
+    <div class="container-fluid bg-dark">
+        <div class="container text-center">
+            <p class="text-left"><br><br>Related Sites：</p>
+            <table class="text-left" align="center" id="claimtable" width="85%">
+                <tr>
+                    <td><a id="sitemap" href="https://www.facebook.com/wangdongisme">->&nbsp;Facebook: Darren Wang</a> </td>
+                    <td><a id="sitemap" href="dongandyuewen/index.html">->&nbsp;Two Year Aniversary</a></td>
+                    <td><a id="sitemap" href="https://wangdong.blog.ustc.edu.cn">->&nbsp;USTC Blog</a></td>
+                </tr>
+                <tr>
+                    <td><a id="sitemap" href="https://github.com/wangdongustc">->&nbsp;Github: wangdongustc</a></td>
+                    <td><a id="sitemap" href="blog/index.html">->&nbsp;Hexo Blog</a></td>
+                    <td><a id="sitemap" href="https://www.zhihu.com/people/wang-dong-19-95">->&nbsp;Zhihu: Darren Wang</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+            </table>
 
-Your IP:<script language="JavaScript" type="text/javascript" src=http://home.ustc.edu.cn/cgi-bin/myip> </script>
- <a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fhome.ustc.edu.cn/~bighead">
-    <img style="border:0;width:44px;height:15px"
-        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
-        alt="Valid CSS!" />
-</a></p>
-		</div> 
-</div>
+            <hr>
+            <p>I want to thank my families, friends and my girlfriend, Yuewen Sun, who always love me, and give me encouragement.<br>                Designed by Darren Wang. Some pictures are used under <a id="sitemap" href="https://creativecommons.org/licenses/by/3.0/"
+                    target="_blank">the Creative Commons license</a>. (C) 2016-2017 Darren Wang all rights reserved for other
+                content.
+                <br><strong>Cookies are used to track your visit</strong>. Access count:
 
+                <!-- Start of StatCounter Code for Default Guide -->
+                <script type="text/javascript">
+        var sc_project=10001089;
+        var sc_invisible=0;
+        var sc_security="c0df197e";
+        var sc_text=2;
+        var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+        document.write("<sc"+"ript type='text/javascript' src='" +
+        scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+        </script>
+                <noscript>
+                    <div class="statcounter">
+                        <a title="web statistics" href="http://statcounter.com/free-web-stats/" target="_blank"><img class="statcounter" src="//c.statcounter.com/10001089/0/c0df197e/0/" alt="web
+        statistics"></a>
+                    </div>
+                </noscript>
+                <!-- End of StatCounter Code for Default Guide -->
 
+                Your IP:<script language="JavaScript" type="text/javascript" src=http://home.ustc.edu.cn/cgi-bin/myip> </script></p>
+        </div>
+    </div>
+    </div>
+    </div>
 </body>
 
 </html>

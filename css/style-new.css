@@ -1,0 +1,58 @@
+.img-banner {
+  background: url('../img/banner.jpg') center / cover;
+  background-attachment:fixed;
+}
+
+.img-h1 {
+  background: url('../img/h1.jpg') center / cover;
+  background-attachment:fixed;  
+}
+
+.img-h2 {
+  background: url('../img/h2.png') center / cover;
+  background-attachment:fixed;  
+  color: #000;
+}
+
+.img-h3 {
+  background: url('../img/h3.jpg') center / cover;
+  background-attachment:fixed;  
+  color: #fff;
+}
+
+.head-title {
+    text-align: left;
+}
+
+.light-font {
+	color:#fcfcfc;
+  text-shadow: 3px 3px 2px black; 
+}
+
+.point-img {
+  width: 100pt;
+}
+
+.bg-grey {
+  background-color: #fafafa;
+}
+
+.bg-dark {
+  background-color: #757575;
+  color: #fff;
+}
+
+.bg-grey-dark {
+  background-color: #dfdfdf;
+  color: #000;
+}
+
+#sitemap {
+  color:#fff;
+}
+
+@media (max-width: 767px) {
+  .head-title {
+    text-align: center;
+  }
+}
