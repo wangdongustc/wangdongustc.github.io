@@ -63,17 +63,17 @@
     </header>
     <div class="entry">
       
-        <h2 id="0x00-Chromebook-只能用-Google-Chrome的笔记本"><a href="#0x00-Chromebook-只能用-Google-Chrome的笔记本" class="headerlink" title="0x00 Chromebook: 只能用 Google Chrome的笔记本"></a>0x00 Chromebook: 只能用 Google Chrome的笔记本</h2><p>虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 <a href="https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps" target="_blank" rel="external">Android on Chrome OS</a> 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。</p>
-<p>因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 <a href="https://github.com/dnschneid/crouton" target="_blank" rel="external">Crouton</a> 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。</p>
+        <h2 id="0x00-Chromebook-只能用-Google-Chrome的笔记本"><a href="#0x00-Chromebook-只能用-Google-Chrome的笔记本" class="headerlink" title="0x00 Chromebook: 只能用 Google Chrome的笔记本"></a>0x00 Chromebook: 只能用 Google Chrome的笔记本</h2><p>虽然 Chromebook 看起来便宜（？）又美观，但是其系统 Chrome OS 因为之可以用 Chrome 而被大大的限制了。虽然 16/17 年 Google 会提供 <a href="https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps" target="_blank" rel="noopener">Android on Chrome OS</a> 来弥补应用的短缺，但毕竟还是不能实现从内容消费到生产力角色的转换。</p>
+<p>因此，在失去质保的前提下，有几个可以在 Chromebook 上安装 linux 的方法，包括 <a href="https://github.com/dnschneid/crouton" target="_blank" rel="noopener">Crouton</a> 和 native linux 的安装方式。Crouton 安装简便，但是不能随意选择发行版，而且各种功能（存储空间过小是大问题）受到限制，而 native linux 才能发挥出完整 linux 在 Chromebook 上的潜力。</p>
 <p>本机型号是 Dell Chromebook 13 7310，搭载 Core i3-5005U 处理器和 4GB 内存，跑 linux 应该会很轻松的。<br><a id="more"></a></p>
-<h2 id="0x01-解锁开发者模式"><a href="#0x01-解锁开发者模式" class="headerlink" title="0x01 解锁开发者模式"></a>0x01 解锁开发者模式</h2><p><a href="https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/acer-c720-chromebook" target="_blank" rel="external">Chromium 网站</a>上有如何将 Chromebook 切换到 developer mode:</p>
+<h2 id="0x01-解锁开发者模式"><a href="#0x01-解锁开发者模式" class="headerlink" title="0x01 解锁开发者模式"></a>0x01 解锁开发者模式</h2><p><a href="https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/acer-c720-chromebook" target="_blank" rel="noopener">Chromium 网站</a>上有如何将 Chromebook 切换到 developer mode:</p>
 <p><cite>To invoke Recovery mode, you hold down the <em>ESC</em> and <em>Refresh (F3)</em> keys and poke the Power button.</cite></p>
 <p>To enter Dev-mode you first invoke Recovery, and at the Recovery screen press <em>Ctrl-D</em> (there’s no prompt - you have to know to do it). It will ask you to confirm, then reboot into dev-mode.</p>
 <p>就是按住 ESC 和 刷新键 (F2) 后按开关启动，就可以进入一个警告界面。等待30s或者按 Ctrl-D 即可继续开机。</p>
-<h2 id="0x02-修复盘制作"><a href="#0x02-修复盘制作" class="headerlink" title="0x02 修复盘制作"></a>0x02 修复盘制作</h2><p>参考 <a href="https://support.google.com/chromebook/answer/1080595?hl=en" target="_blank" rel="external">Chrome OS</a> 官方的帮助文档，方法为：</p>
+<h2 id="0x02-修复盘制作"><a href="#0x02-修复盘制作" class="headerlink" title="0x02 修复盘制作"></a>0x02 修复盘制作</h2><p>参考 <a href="https://support.google.com/chromebook/answer/1080595?hl=en" target="_blank" rel="noopener">Chrome OS</a> 官方的帮助文档，方法为：</p>
 <p><cite></cite></p>
 <ol>
-<li><p>On the working computer (not the Chromebook with the error), <a href="https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai" target="_blank" rel="external">install the recovery app</a></p>
+<li><p>On the working computer (not the Chromebook with the error), <a href="https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai" target="_blank" rel="noopener">install the recovery app</a></p>
 </li>
 <li><p>Open the app and follow the on-screen instructions to create the recovery media.</p>
 </li>
@@ -93,12 +93,12 @@
 </li>
 </ol>
 <p>其实就是下载那个App，然后创建一个SD卡就可以了用来恢复 ChromeOS了。</p>
-<h2 id="0x03-开启-SeaBIOS"><a href="#0x03-开启-SeaBIOS" class="headerlink" title="0x03 开启 SeaBIOS"></a>0x03 开启 SeaBIOS</h2><p>参考 Arch Linux 的安装指南，如何在 <a href="https://wiki.archlinux.org/index.php/Chrome_OS_devices" target="_blank" rel="external">Chromebook 上安装</a>。内容十分详细。<br>在 Dell 7310 上，安装 SeaBIOS 的方法是<a href="https://github.com/Kerryliu/Native-Linux-on-Dell-Chromebook-13/wiki/Enabling-Legacy-Boot" target="_blank" rel="external">参考</a>：</p>
+<h2 id="0x03-开启-SeaBIOS"><a href="#0x03-开启-SeaBIOS" class="headerlink" title="0x03 开启 SeaBIOS"></a>0x03 开启 SeaBIOS</h2><p>参考 Arch Linux 的安装指南，如何在 <a href="https://wiki.archlinux.org/index.php/Chrome_OS_devices" target="_blank" rel="noopener">Chromebook 上安装</a>。内容十分详细。<br>在 Dell 7310 上，安装 SeaBIOS 的方法是<a href="https://github.com/Kerryliu/Native-Linux-on-Dell-Chromebook-13/wiki/Enabling-Legacy-Boot" target="_blank" rel="noopener">参考</a>：</p>
 <ol>
 <li>脚本<br>这些代码的运行方法为，在 Chrome 界面按 Ctrl+Alt+t 调出 terminal, 打 shell 进入 bash 后操作。</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>;</span><br><span class="line">rm <span class="_">-f</span> flash_chromebook_rom.sh; </span><br><span class="line">curl -k -L -O https://johnlewis.ie/flash_chromebook_rom.sh; </span><br><span class="line">sudo -E bash flash_chromebook_rom.sh</span><br></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>;</span><br><span class="line">rm -f flash_chromebook_rom.sh; </span><br><span class="line">curl -k -L -O https://johnlewis.ie/flash_chromebook_rom.sh; </span><br><span class="line">sudo -E bash flash_chromebook_rom.sh</span><br></pre></td></tr></table></figure>
+<ol start="2">
 <li>命令<br>运行完脚本之后，以 root 身份输入：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crossystem dev_boot_usb=1 dev_boot_legacy=1</span><br></pre></td></tr></table></figure>
@@ -106,9 +106,9 @@
 <p>安装了之后，系统就可以在开机启动U盘了。开机启动时候，按 Ctrl+L 即可进入启动菜单选项。</p>
 <h2 id="0x04-USB-启动介质制作"><a href="#0x04-USB-启动介质制作" class="headerlink" title="0x04 USB 启动介质制作"></a>0x04 USB 启动介质制作</h2><p>测试发现 opensuse Tumbleweed 安装会有问题，Ubuntu Mate 和 普通 desktop 也没有成功。最后用 Fedora 24 十分完美的安装成功了。</p>
 <ol>
-<li><p>首先是 Fedora 下载，Workstation 版<a href="https://getfedora.org/" target="_blank" rel="external">由此下载</a>。</p>
+<li><p>首先是 Fedora 下载，Workstation 版<a href="https://getfedora.org/" target="_blank" rel="noopener">由此下载</a>。</p>
 </li>
-<li><p>U盘启动制作器，可用的有很多，比如 <a href="http://www.majorgeeks.com/files/details/imageusb.html" target="_blank" rel="external">ImageUSB</a></p>
+<li><p>U盘启动制作器，可用的有很多，比如 <a href="http://www.majorgeeks.com/files/details/imageusb.html" target="_blank" rel="noopener">ImageUSB</a></p>
 </li>
 <li><p>按照步骤，在另一台电脑上制作启动U盘，记得校验是否成功。</p>
 </li>
@@ -157,7 +157,7 @@
 
 
 <section id="comment">
-  <h1 class="title">Kommentare</h1>
+  <h1 class="title">Comments</h1>
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="" data-title="在 Chromebook 上装 Linux" data-url=""></div>
 <!-- 多说评论框 end -->
@@ -181,7 +181,7 @@ var duoshuoQuery = {short_name:"wangdong115"};
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:www.wangdongustc.com/blog">
   </form>
 </div>
@@ -215,7 +215,7 @@ var duoshuoQuery = {short_name:"wangdong115"};
   </table>
   </br>
   
-  &copy; 2016 &nbsp;Darren Wang.&nbsp;
+  &copy; 2018 &nbsp;Darren Wang.&nbsp;
   Bring to You by <a href="https://hexo.io/" target="_blank">Hexo</a> on <a href="https://github.com/" target="_blank">Github</a>. &nbsp;
   Your IP:<script language="JavaScript" type="text/javascript" src=http://home.ustc.edu.cn/cgi-bin/myip> </script>.&nbsp;
   

@@ -67,7 +67,7 @@
     <div class="entry">
       
         <h2 id="0x00-Linux-on-Chromebook-存在小Bug"><a href="#0x00-Linux-on-Chromebook-存在小Bug" class="headerlink" title="0x00 Linux on Chromebook: 存在小Bug"></a>0x00 Linux on Chromebook: 存在小Bug</h2><p>之前给 Dell CHromebook 7310 装了 linux Fedora 24 之后，开 Chrome 看视频就会莫名其妙的卡住，然后只能强制关机重启 （长按电源按键）。有一次看 Youtube 视频开了全屏，卡死之后长按电源按键也不再有用，包括合盖也不会熄屏，因此置之不理。第二天去看时候已经完全无法开机，充上电后开机 CPU 发烫，但无法进入 BIOS。无奈叫了 Dell 的保修服务，后维修单显示更换了 <strong>主板</strong>，<strong>网卡</strong>之后才可以开机。</p>
-<p>根据一些网上的信息，貌似是在刷写 <a href="https://johnlewis.ie/" target="_blank" rel="external">SeaBios</a>时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。</p>
+<p>根据一些网上的信息，貌似是在刷写 <a href="https://johnlewis.ie/" target="_blank" rel="noopener">SeaBios</a>时，系统掉电后某标志位复位导致系统丢失；拆机发现在 Fedora 24 下 Chromebook 的风扇一直不转，结合之前联系客服时他很自然的说是过热问题，之前问题的原因可能是散热不好导致主板多个模块烧坏。</p>
 <h2 id="0x01-问题需求"><a href="#0x01-问题需求" class="headerlink" title="0x01 问题需求"></a>0x01 问题需求</h2><p>因此想到至少需要试着解决如下问题：</p>
 <ol>
 <li>电池耗尽 【想到可以保留一部分电量，在10%左右低电关机】</li>
@@ -93,13 +93,13 @@
 <p>然后字符串分析是直接通过 string 的 find() 等函数进行的：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BatteryStatus* <span class="title">GetBatteryLevel</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	BatteryStatus *results = <span class="keyword">new</span> BatteryStatus();</span><br><span class="line">	<span class="built_in">string</span> acpi_output = GetCommandOutput(<span class="string">"acpi"</span>);</span><br><span class="line">	<span class="keyword">int</span> index = acpi_output.find_last_of(<span class="string">'%'</span>);</span><br><span class="line">	results-&gt;percentage = atoi(acpi_output.substr(index<span class="number">-2</span>, index).c_str());</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">string</span>::npos == acpi_output.find(<span class="string">"Discharging"</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">		results-&gt;charging = <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; results.percentage &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里通过检测百分比符号来得到电量信息，通过 “Discharging” 串来判断当前是否在充电。BatteryStatus 是一个类，包含是否在充电，电量百分比成员。<br>判断设备温度时，因为设备个数不一定，因此使用链表来储存设备和其温度信息。其结构为：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> DeviceTemperature &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">string</span> device;</span><br><span class="line">	<span class="keyword">float</span> temperature;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	DeviceTemperature* next_device;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeviceTemperature</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">string</span> device;</span><br><span class="line">	<span class="keyword">float</span> temperature;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	DeviceTemperature* next_device;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>信息提取也是通过字符串分析得到的。</p>
 <p>系统的通知是使用 libnotifymm 库来实现的，效果和方法如下：</p>
 <p><img src="/blog/img/tempture-and-battery-control-on-chromebook/notify.png" alt="通知"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;libnotifymm.h&gt;</span><br><span class="line">#include &lt;libnotifymm/init.h&gt;</span><br><span class="line">#include &lt;libnotifymm/notify.h&gt;</span><br><span class="line">#include &lt;libnotifymm/notification.h&gt;</span><br><span class="line"></span><br><span class="line">// init the notifications.</span><br><span class="line">Notify::init(&quot;Aggressive Power Management&quot;);</span><br><span class="line">string title   = &quot;Aggressive Power Management&quot;;</span><br><span class="line">string message = &quot;电源和过热控制已启动&quot;;</span><br><span class="line">Notify::Notification notification(title, message);</span><br><span class="line">// urgency level: low/normal/critical</span><br><span class="line">notification.set_urgency(Notify::URGENCY_NORMAL);</span><br><span class="line">notification.show();</span><br><span class="line">// update current notification with new title and message</span><br><span class="line">notification.update(title, message);</span><br><span class="line">notification.close();</span><br></pre></td></tr></table></figure>
 <p>main函数里面的逻辑就是在一个 while(1) 循环里面不断检查电量和温度，然后在适合的时间关机 （system(“init 0”);）。</p>
-<p>完整的程序在 <a href="https://coding.net/" target="_blank" rel="external">coding.net</a> 上，项目地址为 <a href="https://coding.net/u/wangdong115/p/MakingWheel/git" target="_blank" rel="external">https://coding.net/u/wangdong115/p/MakingWheel/git</a>，在 tmpctrl 文件夹下。</p>
+<p>完整的程序在 <a href="https://coding.net/" target="_blank" rel="noopener">coding.net</a> 上，项目地址为 <a href="https://coding.net/u/wangdong115/p/MakingWheel/git" target="_blank" rel="noopener">https://coding.net/u/wangdong115/p/MakingWheel/git</a>，在 tmpctrl 文件夹下。</p>
 <p>另：在 eclipse 中做这个时候，编译链接时需要在设置里添加库的路径，然后通过 </p>
 <p>C/C++ Build-&gt;Setting-&gt;Gcc c Compiler-&gt;Miscellaneous中添加$$(pkg-config –cflags glibmm-2.4 –cflags libnotifymm-1.0)<br>C/C++ Build-&gt;Setting-&gt;Gcc c Linker-&gt;Miscellaneous中添加$$(pkg-config –libs glibmm-2.4 –libs libnotifymm-1.0)</p>
 <p>来让 g++ 在编译和链接的时候不懵逼。</p>
@@ -146,7 +146,7 @@
 
 
 <section id="comment">
-  <h1 class="title">Kommentare</h1>
+  <h1 class="title">Comments</h1>
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="" data-title="Chromebook 在 Fedora 24 下的温度控制" data-url=""></div>
 <!-- 多说评论框 end -->
@@ -170,7 +170,7 @@ var duoshuoQuery = {short_name:"wangdong115"};
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:www.wangdongustc.com/blog">
   </form>
 </div>
@@ -204,7 +204,7 @@ var duoshuoQuery = {short_name:"wangdong115"};
   </table>
   </br>
   
-  &copy; 2016 &nbsp;Darren Wang.&nbsp;
+  &copy; 2018 &nbsp;Darren Wang.&nbsp;
   Bring to You by <a href="https://hexo.io/" target="_blank">Hexo</a> on <a href="https://github.com/" target="_blank">Github</a>. &nbsp;
   Your IP:<script language="JavaScript" type="text/javascript" src=http://home.ustc.edu.cn/cgi-bin/myip> </script>.&nbsp;
   
